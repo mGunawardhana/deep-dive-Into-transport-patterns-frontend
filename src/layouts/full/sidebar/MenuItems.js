@@ -1,4 +1,4 @@
-import { IconLayoutDashboard, IconLogin } from '@tabler/icons';
+import { IconLayoutDashboard, IconChartBubble, IconChartLine, IconChartBar } from '@tabler/icons';
 
 import { uniqueId } from 'lodash';
 
@@ -7,49 +7,34 @@ const Menuitems = [
     navlabel: true,
     subheader: 'Home',
   },
-
   {
     id: uniqueId(),
     title: 'Dashboard',
     icon: IconLayoutDashboard,
     href: '/dashboard',
   },
-  // {
-  //   navlabel: true,
-  //   subheader: 'Utilities',
-  // },
   {
     navlabel: true,
-    subheader: 'Auth',
+    subheader: 'More About',
   },
   {
     id: uniqueId(),
-    title: 'Login',
-    icon: IconLogin,
-    href: '/auth/login',
+    title: 'Chart 01',
+    icon: IconChartBubble,
+    href: '#',
   },
-  // {
-  //   id: uniqueId(),
-  //   title: 'Register',
-  //   icon: IconUserPlus,
-  //   href: '/auth/register',
-  // },
-  // {
-  //   navlabel: true,
-  //   subheader: 'Extra',
-  // },
-  // {
-  //   id: uniqueId(),
-  //   title: 'Icons',
-  //   icon: IconMoodHappy,
-  //   href: '/icons',
-  // },
-  // {
-  //   id: uniqueId(),
-  //   title: 'Sample Page',
-  //   icon: IconAperture,
-  //   href: '/sample-page',
-  // },
+  {
+    id: uniqueId(),
+    title: 'Chart 02',
+    icon: IconChartLine,
+    href: '#',
+  },
+  {
+    id: uniqueId(),
+    title: 'Chart 03',
+    icon: IconChartBar,
+    href: '#',
+  },
 ];
 
 export default Menuitems;
