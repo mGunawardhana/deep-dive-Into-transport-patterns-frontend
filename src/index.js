@@ -1,4 +1,5 @@
 import React, { Suspense } from 'react';
+import 'bootstrap/dist/css/bootstrap.css';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
@@ -9,5 +10,5 @@ root.render(
     <BrowserRouter>
       <App />
     </BrowserRouter>
-  </Suspense>
+  </Suspense>,
 );

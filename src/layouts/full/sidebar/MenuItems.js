@@ -15,6 +15,16 @@ const Menuitems = [
   },
   {
     navlabel: true,
+    subheader: 'User Management',
+  },
+  {
+    id: uniqueId(),
+    title: 'User Management',
+    icon: IconChartBubble,
+    href: '/user',
+  },
+  {
+    navlabel: true,
     subheader: 'More About',
   },
   {
