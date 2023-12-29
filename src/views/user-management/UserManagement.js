@@ -262,37 +262,28 @@ const UserManagement = () => {
                         </TabPane>
                       </TabContent>
                     </div>
-                    <div className="actions flex justify-between">
+                    <div className="actions flex justify-between items-center">
+                      {' '}
+                      {/* Added items-center for vertical alignment */}
                       <ul className="list-none flex space-x-4">
-                        <li
-                          className={`transition-colors duration-300 ${
-                            activeTab === 1 ? 'opacity-50 pointer-events-none' : ''
-                          }`}
+                        <Link
+                          to="#"
+                          onClick={showToastMessage}
+                          className="btn btn-secondary px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400"
                         >
-                          <Link
-                            to="#"
-                            onClick={showToastMessage}
-                            className="btn btn-secondary px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400"
-                          >
-                            Cancel
-                          </Link>
-                          <ToastContainer />
-                        </li>
-                        <li
-                          className={`transition-colors duration-300 ${
-                            activeTab === 4 ? 'opacity-50 pointer-events-none' : ''
-                          }`}
+                          Cancel
+                        </Link>
+                        <ToastContainer />
+
+                        <Link
+                          to="#"
+                          onClick={() => {
+                            // toggleTab(activeTab + 1);
+                          }}
+                          className="btn btn-success px-4 py-2 rounded-md hover:bg-green-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50"
                         >
-                          <Link
-                            to="#"
-                            onClick={() => {
-                              // toggleTab(activeTab + 1);
-                            }}
-                            className="btn btn-success px-4 py-2 rounded-md hover:bg-green-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50"
-                          >
-                            Submit
-                          </Link>
-                        </li>
+                          Submit
+                        </Link>
                       </ul>
                     </div>
                   </div>
