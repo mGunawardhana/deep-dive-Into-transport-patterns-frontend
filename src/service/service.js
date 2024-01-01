@@ -1,5 +1,5 @@
-import { post, get } from '../helpers/api_helper';
-import * as url from './url_helper';
+import { get, post } from './api_helpers';
+import * as url from './url_helpers';
 
-export const saveGlobalAccount = (data, coUserId) => post(url.SAVE_GLOBAL_ACCOUNT + coUserId, data);
-export const getGlobalAccounts = (coUserId) => get(url.GET_GLOBAL_ACCOUNTS + coUserId);
+export const saveUser = (data) => post(url.CREATE_USER,data);
+export const findUserByTheirID = (coUserId) => get(url.FETCH_USER_BY_THEIR_ID + coUserId);

@@ -1,300 +1,329 @@
 import React, { useState } from 'react';
-import { ToastContainer, toast } from 'react-toastify';
+import * as yup from 'yup';
+import { Form, Formik, Field,ErrorMessage } from 'formik';
 import 'react-toastify/dist/ReactToastify.css';
-
-import { Card, CardBody, Col, Container, Form, Input, Row, TabContent, TabPane } from 'reactstrap';
-// import Breadcrumbs from '../../components/Common/Breadcrumb';
-import { Link } from 'react-router-dom';
+import { Button, Card, CardBody, Col, Container, Row, TabContent, TabPane } from 'reactstrap';
+import { toast } from 'react-toastify';
 
 const UserManagement = () => {
-  //   const [activeTab, setactiveTab] = useState(1);
-  const [activeTab] = useState(1);
+  const [formSubmitData, setFormSubmitData] = useState([]);
 
-  //   const [activeTabProgress, setactiveTabProgress] = useState(1);
-  //   const [progressValue, setprogressValue] = useState(25);
-  //   const [setprogressValue] = useState(25);
-  //   const [activeTabVartical, setoggleTabVertical] = useState(1);
-
-  //   function toggleTab(tab) {
-  //     if (activeTab !== tab) {
-  //       if (tab >= 1 && tab <= 4) {
-  //         setactiveTab(tab);
-  //       }
-  //     }
-  //   }
-
-  //   function toggleTabVertical(tab) {
-  //     if (activeTabVartical !== tab) {
-  //       if (tab >= 1 && tab <= 4) {
-  //         setoggleTabVertical(tab);
-  //       }
-  //     }
-  //   }
-
-  //   function toggleTabProgress(tab) {
-  //     if (activeTabProgress !== tab) {
-  //       if (tab >= 1 && tab <= 4) {
-  //         setactiveTabProgress(tab);
-
-  //         if (tab === 1) {
-  //           setprogressValue(25);
-  //         }
-  //       }
-  //     }
-  //   }
-  const showToastMessage = () => {
-    toast.error('Cancelation Success !', {
-      position: toast.POSITION.BOTTOM_RIGHT,
-    });
+  const formSubmitManually = async (value) => {
+    const data = { ...formSubmitData, registerPayee : value }
+    try {
+      // const response = await saveUser(data);
+      console.log(data);
+      toast.success("Successfully Insert");
+    } catch (error) {
+      toast.error("Error")
+    }
+  }
+  const onSubmit = async (values) => {
+    const data = {
+      userId: values.userId,
+      userName: values.userName,
+      email: values.email,
+      mobile: values.mobile,
+      password: values.password,
+      re_type_password: values.re_type_password,
+      country: values.country,
+      country_code: values.country_code,
+      address: values.address,
+      note: values.note,
+    };
+    console.log(data);
+    setFormSubmitData(data);
   };
-  return (
-    <React.Fragment>
-      <div className="page-content">
-        <Container fluid={true}>
-          {/* <Breadcrumbs maintitle="Dashboard" title="Forms" breadcrumbItem="Inquiry form" /> */}
-          <Row>
-            <Col sm="12">
-              <Card className="outline-none" style={{ border: 'none' }}>
-                <CardBody className="outline-none">
+
+  const validationSchema = yup.object().shape({
+    userId: yup.string().required('User ID Is Required'),
+    userName: yup.string().required('User Name Is Required'),
+    email: yup.string().required('Email Is Required'),
+    mobile: yup.string().required('Mobile Is Required'),
+    password: yup.string().required('Password Is Required'),
+    re_type_password: yup.string()
+      .oneOf([yup.ref('password'), null], 'Passwords must match')
+      .required('Re-type Password Is Required'),
+    country: yup.string().required('Country Is Required'),
+    country_code: yup.string().required('Country Code Is Required'),
+    address: yup.string().required('Address Is Required'),
+    note: yup.string().required('Note Is Required'),
+  });
+
+  return (<React.Fragment>
+    <div className="page-content">
+      <Container fluid={true}>
+        <Row>
+          <Col sm="12">
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '75vh' }}>
+              <Card style={{ boxShadow: 'rgb(38, 57, 77) 0px 20px 30px -10px', width: '90vw', }}>                <CardBody className="outline-none">
                   <h4 className="card-title mb-4">User Management Form</h4>
                   <div className="form-horizontal form-wizard-wrapper wizard clearfix">
                     <div className="content clearfix">
-                      <TabContent activeTab={activeTab} className="body">
+                      <TabContent activeTab={1} className="body">
                         <TabPane tabId={1}>
-                          <Form>
-                            <Row>
-                              <Col md={6}>
-                                <Row className="mb-3">
-                                  <label
-                                    htmlFor="txtFirstNameBilling"
-                                    className="col-lg-3 col-form-label"
-                                  >
-                                    User ID
-                                  </label>
-                                  <div className="col-lg-9">
-                                    <Input
-                                      id="txtFirstNameBilling"
-                                      name="txtFirstNameBilling"
-                                      type="text"
-                                      className="form-control"
-                                      placeholder="Enter your name"
-                                    />
+                          <Formik
+                            enableReinitialize
+                            initialValues={{
+                              userId: '',
+                              userName: '',
+                              email: '',
+                              mobile: '',
+                              password: '',
+                              re_type_password: '',
+                              country: '',
+                              country_code: '',
+                              address: '',
+                              note: '',
+                            }}
+                            validationSchema={validationSchema}
+                            onSubmit={onSubmit}
+                          >
+                            {({ isSubmitting, values, setFieldValue }) =>(<Form>
+                                <Row>
+                                  <Col md={6}>
+                                    <Row className="mb-3">
+                                      <label
+                                        htmlFor="userId"
+                                        className="col-lg-3 col-form-label"
+                                      >
+                                        User ID
+                                      </label>
+                                      <div className="col-lg-9">
+                                        <Field
+                                          id="userId"
+                                          name="userId"
+                                          type="text"
+                                          className="form-control"
+                                          placeholder="user id here "
+                                        />
+                                      </div>
+                                    </Row>
+                                  </Col>
+                                  <Col md={6}>
+                                    <Row className="mb-3">
+                                      <label
+                                        htmlFor="userName"
+                                        className="col-lg-3 col-form-label"
+                                      >
+                                        User Name<span style={{ color: 'red' }}> *</span>
+                                      </label>
+                                      <div className="col-lg-9">
+                                        <Field
+                                          id="userName"
+                                          name="userName"
+                                          type="text"
+                                          className="form-control"
+                                          placeholder="user name here"
+                                        />
+                                        <ErrorMessage name="userName" component="div" className="text-danger" />
+                                      </div>
+                                    </Row>
+                                  </Col>
+                                </Row>
+                                <Row>
+                                  <Col md={6}>
+                                    <Row className="mb-3">
+                                      <label
+                                        htmlFor="email"
+                                        className="col-lg-3 col-form-label"
+                                      >
+                                        Email<span style={{ color: 'red' }}> *</span>
+                                      </label>
+                                      <div className="col-lg-9">
+                                        <Field
+                                          id="email"
+                                          name="email"
+                                          type="text"
+                                          className="form-control"
+                                          placeholder="email here"
+                                        />
+                                        <ErrorMessage name="email" component="div" className="text-danger" />
+                                      </div>
+                                    </Row>
+                                  </Col>
+                                  <Col md={6}>
+                                    <Row className="mb-3">
+                                      <label
+                                        htmlFor="mobile"
+                                        className="col-lg-3 col-form-label"
+                                      >
+                                        Mobile No <span style={{ color: 'red' }}> *</span>
+                                      </label>
+                                      <div className="col-lg-9">
+                                        <Field
+                                          id="mobile"
+                                          name="mobile"
+                                          type="text"
+                                          className="form-control"
+                                          placeholder="mobile number here"
+                                        />
+                                        <ErrorMessage name="mobile" component="div" className="text-danger" />
+                                      </div>
+                                    </Row>
+                                  </Col>
+                                </Row>
+                                <Row>
+                                  <Col md={6}>
+                                    <Row className="mb-3">
+                                      <label
+                                        htmlFor="password"
+                                        className="col-lg-3 col-form-label"
+                                      >
+                                        Password<span style={{ color: 'red' }}> *</span>
+                                      </label>
+                                      <div className="col-lg-9">
+                                        <Field
+                                          id="password"
+                                          name="password"
+                                          type="password"
+                                          className="form-control"
+                                        />
+                                        <ErrorMessage name="password" component="div" className="text-danger" />
+                                      </div>
+                                    </Row>
+                                  </Col>
+                                  <Col md={6}>
+                                    <Row className="mb-3">
+                                      <label
+                                        htmlFor="re_type_password"
+                                        className="col-lg-3 col-form-label"
+                                      >
+                                        Re-type Password<span style={{ color: 'red' }}> *</span>
+                                      </label>
+                                      <div className="col-lg-9">
+                                        <Field
+                                          id="re_type_password"
+                                          name="re_type_password"
+                                          type="password"
+                                          className="form-control"
+                                        />
+                                        <ErrorMessage name="re_type_password" component="div" className="text-danger" />
+                                      </div>
+                                    </Row>
+                                  </Col>
+                                </Row>
+                                <Row>
+                                  <Col md={6}>
+                                    <Row className="mb-3">
+                                      <label
+                                        htmlFor="country"
+                                        className="col-lg-3 col-form-label"
+                                      >
+                                        Country<span style={{ color: 'red' }}> *</span>
+                                      </label>
+                                      <div className="col-lg-9">
+                                        <Field
+                                          id="country"
+                                          name="country"
+                                          type="text"
+                                          className="form-control"
+                                        />
+                                        <ErrorMessage name="country" component="div" className="text-danger" />
+                                      </div>
+                                    </Row>
+                                  </Col>
+                                  <Col md={6}>
+                                    <Row className="mb-3">
+                                      <label
+                                        htmlFor="country_code"
+                                        className="col-lg-3 col-form-label"
+                                      >
+                                        Country-Code<span style={{ color: 'red' }}> *</span>
+                                      </label>
+                                      <div className="col-lg-9">
+                                        <Field
+                                          id="country_code"
+                                          name="country_code"
+                                          type="text"
+                                          className="form-control"
+                                        />
+                                        <ErrorMessage name="country_code" component="div" className="text-danger" />
+                                      </div>
+                                    </Row>
+                                  </Col>
+                                </Row>
+                                <Row>
+                                  <Col md={6}>
+                                    <Row className="mb-3">
+                                      <label
+                                        htmlFor="address"
+                                        className="col-lg-3 col-form-label"
+                                      >
+                                        Address <span style={{ color: 'red' }}> *</span>
+                                      </label>
+                                      <div className="col-lg-9">
+                                        <Field as="textarea" id="address" name="address" rows="4" className="form-control"
+                                                  placeholder="Address here"/>
+                                        <ErrorMessage name="address" component="div" className="text-danger" />
+                                      </div>
+                                    </Row>
+                                  </Col>
+                                  <Col md={6}>
+                                    <Row className="mb-3">
+                                      <label
+                                        htmlFor="note"
+                                        className="col-lg-3 col-form-label"
+                                      >
+                                        Note
+                                      </label>
+                                      <div className="col-lg-9">
+                                        <Field as="textarea"
+                                          id="note"
+                                          name="note"
+                                          rows="4"
+                                          className="form-control"
+                                          placeholder="Note here"
+                                        />
+                                      </div>
+                                    </Row>
+                                  </Col>
+                                  <div className="ml-[100px] mt-[0px] pb-[15px]">
+                                    <Button
+                                      onClick={() => formSubmitManually(values)}
+                                      id="saveBtn"
+                                      style={{
+                                        backgroundColor: '#039b48',
+                                        marginRight: '7px',
+                                        fontWeight: 'bolder',
+                                        border: 'none',
+                                      }}
+                                      variant="contained"
+                                      type="submit"
+                                      size="small"
+                                    >
+                                      Register
+                                    </Button>
+                                    <Button
+                                      style={{
+                                        backgroundColor: '#ff4757',
+                                        marginRight: '7px',
+                                        fontWeight: 'bolder',
+                                        border: 'none',
+                                      }}
+                                      variant="contained"
+                                      type="submit"
+                                    >
+                                      Cancel
+                                    </Button>
                                   </div>
                                 </Row>
-                              </Col>
-                              <Col md={6}>
-                                <Row className="mb-3">
-                                  <label
-                                    htmlFor="txtLastNameBilling"
-                                    className="col-lg-3 col-form-label"
-                                  >
-                                    User Name.
-                                  </label>
-                                  <div className="col-lg-9">
-                                    <Input
-                                      id="txtLastNameBilling"
-                                      name="txtLastNameBilling"
-                                      type="text"
-                                      className="form-control"
-                                      placeholder="Enter your number"
-                                    />
-                                  </div>
-                                </Row>
-                              </Col>
-                            </Row>
-                            <Row>
-                              <Col md={6}>
-                                <Row className="mb-3">
-                                  <label
-                                    htmlFor="txtFirstNameBilling"
-                                    className="col-lg-3 col-form-label"
-                                  >
-                                    Email
-                                  </label>
-                                  <div className="col-lg-9">
-                                    <Input
-                                      id="txtFirstNameBilling"
-                                      name="txtFirstNameBilling"
-                                      type="text"
-                                      className="form-control"
-                                      placeholder="Enter your name"
-                                    />
-                                  </div>
-                                </Row>
-                              </Col>
-                              <Col md={6}>
-                                <Row className="mb-3">
-                                  <label
-                                    htmlFor="txtLastNameBilling"
-                                    className="col-lg-3 col-form-label"
-                                  >
-                                    Mobile No.
-                                  </label>
-                                  <div className="col-lg-9">
-                                    <Input
-                                      id="txtLastNameBilling"
-                                      name="txtLastNameBilling"
-                                      type="text"
-                                      className="form-control"
-                                      placeholder="Enter your number"
-                                    />
-                                  </div>
-                                </Row>
-                              </Col>
-                            </Row>
-                            <Row>
-                              <Col md={6}>
-                                <Row className="mb-3">
-                                  <label
-                                    htmlFor="txtTelephoneBilling"
-                                    className="col-lg-3 col-form-label"
-                                  >
-                                    Password
-                                  </label>
-                                  <div className="col-lg-9">
-                                    <Input
-                                      id="txtTelephoneBilling"
-                                      name="txtTelephoneBilling"
-                                      type="text"
-                                      className="form-control"
-                                    />
-                                  </div>
-                                </Row>
-                              </Col>
-                              <Col md={6}>
-                                <Row className="mb-3">
-                                  <label
-                                    htmlFor="txtFaxBilling"
-                                    className="col-lg-3 col-form-label"
-                                  >
-                                    Re-type Password
-                                  </label>
-                                  <div className="col-lg-9">
-                                    <Input
-                                      id="txtFaxBilling"
-                                      name="txtFaxBilling"
-                                      type="text"
-                                      className="form-control"
-                                    />
-                                  </div>
-                                </Row>
-                              </Col>
-                            </Row>
-                            <Row>
-                              <Col md={6}>
-                                <Row className="mb-3">
-                                  <label
-                                    htmlFor="txtTelephoneBilling"
-                                    className="col-lg-3 col-form-label"
-                                  >
-                                    Country
-                                  </label>
-                                  <div className="col-lg-9">
-                                    <Input
-                                      id="txtTelephoneBilling"
-                                      name="txtTelephoneBilling"
-                                      type="text"
-                                      className="form-control"
-                                    />
-                                  </div>
-                                </Row>
-                              </Col>
-                              <Col md={6}>
-                                <Row className="mb-3">
-                                  <label
-                                    htmlFor="txtFaxBilling"
-                                    className="col-lg-3 col-form-label"
-                                  >
-                                    Country-Code
-                                  </label>
-                                  <div className="col-lg-9">
-                                    <Input
-                                      id="txtFaxBilling"
-                                      name="txtFaxBilling"
-                                      type="text"
-                                      className="form-control"
-                                    />
-                                  </div>
-                                </Row>
-                              </Col>
-                            </Row>
-                            <Row>
-                              <Col md={6}>
-                                <Row className="mb-3">
-                                  <label
-                                    htmlFor="txtAddress1Billing"
-                                    className="col-lg-3 col-form-label"
-                                  >
-                                    Address 1
-                                  </label>
-                                  <div className="col-lg-9">
-                                    <textarea
-                                      id="txtAddress1Billing"
-                                      name="txtAddress1Billing"
-                                      rows="4"
-                                      className="form-control"
-                                      placeholder="Enter your first address"
-                                    ></textarea>
-                                  </div>
-                                </Row>
-                              </Col>
-                              <Col md={6}>
-                                <Row className="mb-3">
-                                  <label
-                                    htmlFor="txtAddress2Billing"
-                                    className="col-lg-3 col-form-label"
-                                  >
-                                    Complaint
-                                  </label>
-                                  <div className="col-lg-9">
-                                    <textarea
-                                      id="txtAddress2Billing"
-                                      name="txtAddress2Billing"
-                                      rows="4"
-                                      className="form-control"
-                                      placeholder="complaint reason"
-                                    ></textarea>
-                                  </div>
-                                </Row>
-                              </Col>
-                            </Row>
-                          </Form>
+                              </Form>
+
+                            )}
+                          </Formik>
                         </TabPane>
                       </TabContent>
-                    </div>
-                    <div className="actions flex justify-between items-center">
-                      {' '}
-                      {/* Added items-center for vertical alignment */}
-                      <ul className="list-none flex space-x-4">
-                        <Link
-                          to="#"
-                          onClick={showToastMessage}
-                          className="btn btn-secondary px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400"
-                        >
-                          Cancel
-                        </Link>
-                        <ToastContainer />
-
-                        <Link
-                          to="#"
-                          onClick={() => {
-                            // toggleTab(activeTab + 1);
-                          }}
-                          className="btn btn-success px-4 py-2 rounded-md hover:bg-green-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50"
-                        >
-                          Submit
-                        </Link>
-                      </ul>
                     </div>
                   </div>
                 </CardBody>
               </Card>
-            </Col>
-          </Row>
-        </Container>
-      </div>
-    </React.Fragment>
-  );
+            </div>
+          </Col>
+        </Row>
+      </Container>
+    </div>
+  </React.Fragment>);
 };
 
 export default UserManagement;

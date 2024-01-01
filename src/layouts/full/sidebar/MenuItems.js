@@ -11,7 +11,7 @@ const Menuitems = [
     id: uniqueId(),
     title: 'Dashboard',
     icon: IconLayoutDashboard,
-    href: '/dashboard',
+    href: '/system/dashboard',
   },
   {
     navlabel: true,
@@ -21,7 +21,7 @@ const Menuitems = [
     id: uniqueId(),
     title: 'User Management',
     icon: IconChartBubble,
-    href: '/user',
+    href: '/system/user',
   },
   {
     navlabel: true,
@@ -44,7 +44,7 @@ const Menuitems = [
     title: 'Chart 03',
     icon: IconChartBar,
     href: '#',
-  },
+  }
 ];
 
 export default Menuitems;
