@@ -44,7 +44,7 @@ const SignInAndUp = () => {
   return (<div className="container" ref={containerRef}>
       <div className="form-container sign-up-container">
         {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-        <form action="#">
+        <form className="form" action="#">
           <h3>Create Account</h3>
           <div className="social-container">
             <img alt="Google Icon" className="social" src={googleIcon} />
@@ -53,14 +53,14 @@ const SignInAndUp = () => {
           </div>
 
           <span>or use your email for registration</span>
-          <input placeholder="Name" type="text" />
-          <input placeholder="Email" type="email" />
-          <input placeholder="Password" type="password" />
+          <input className="input" placeholder="Name" type="text" />
+          <input className="input" placeholder="Email" type="email" />
+          <input className="input" placeholder="Password" type="password" />
           <button onClick={navigateToDashboard}>Sign Up</button>
         </form>
       </div>
       <div className="form-container sign-in-container">
-        <form action="#">
+        <form className="form" action="#">
           <h3 >Sign in</h3>
           <div className="social-container">
             <img alt="Google Icon" className="social" src={googleIcon} />
@@ -68,8 +68,8 @@ const SignInAndUp = () => {
             <img alt="Apple Icon" className="social" src={appleIcon} />
           </div>
           <span>or use your account</span>
-          <input placeholder="Email" type="email" />
-          <input placeholder="Password" type="password" />
+          <input className="input" placeholder="Email" type="email" />
+          <input className="input" placeholder="Password" type="password" />
           {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
           <a href="#">Forgot your password?</a>
           <button onClick={navigateToDashboard}>Sign In</button>
