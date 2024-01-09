@@ -1,12 +1,13 @@
 import axios from 'axios';
 
 //apply base url for axios
-const API_URL = 'http://localhost:8082/';
+const API_URL = 'http://127.0.0.1:8000/';
 
 const axiosApi = axios.create({
   baseURL: API_URL,
   headers: {
     'Content-Type': 'application/json',
+    'Access-Control-Allow-Headers': '*',
     allowedHeaders: '*',
   },
 });

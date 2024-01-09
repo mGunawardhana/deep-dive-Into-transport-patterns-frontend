@@ -16,8 +16,8 @@ const SalesOverview = () => {
 
     // chart color
     const theme = useTheme();
-    const primary = theme.palette.primary.main;
-    const secondary = theme.palette.secondary.main;
+    const primary = theme.palette.success.main;
+    const secondary = theme.palette.success.dark;
 
     // chart
     const optionscolumnchart = {
@@ -89,8 +89,7 @@ const SalesOverview = () => {
     ];
 
     return (
-
-        <DashboardCard title="Sales Overview" action={
+       <DashboardCard title="Sales Overview" action={
             <Select
                 labelId="month-dd"
                 id="month-dd"

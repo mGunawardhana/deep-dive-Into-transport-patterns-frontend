@@ -9,7 +9,7 @@ import DashboardCard from '../../../components/shared/DashboardCard';
 const YearlyBreakup = () => {
   // chart color
   const theme = useTheme();
-  const primary = theme.palette.primary.main;
+  const primary = theme.palette.success.main;
   const primarylight = '#ecf2ff';
   const successlight = theme.palette.success.light;
 
@@ -18,7 +18,7 @@ const YearlyBreakup = () => {
     chart: {
       type: 'donut',
       fontFamily: "'Plus Jakarta Sans', sans-serif;",
-      foreColor: '#adb0bb',
+      foreColor: '#E6FFFA',
       toolbar: {
         show: false,
       },

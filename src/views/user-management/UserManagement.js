@@ -9,7 +9,7 @@ const UserManagement = () => {
   const [formSubmitData, setFormSubmitData] = useState([]);
 
   const formSubmitManually = async (value) => {
-    const data = { ...formSubmitData, registerPayee : value }
+    const data = { ...formSubmitData, registerUser : value }
     try {
       // const response = await saveUser(data);
       console.log(data);
@@ -20,8 +20,8 @@ const UserManagement = () => {
   }
   const onSubmit = async (values) => {
     const data = {
-      userId: values.userId,
-      userName: values.userName,
+      id: values.id,
+      name: values.name,
       email: values.email,
       mobile: values.mobile,
       password: values.password,
@@ -36,8 +36,8 @@ const UserManagement = () => {
   };
 
   const validationSchema = yup.object().shape({
-    userId: yup.string().required('User ID Is Required'),
-    userName: yup.string().required('User Name Is Required'),
+    id: yup.string().required('User ID Is Required'),
+    name: yup.string().required('User Name Is Required'),
     email: yup.string().required('Email Is Required'),
     mobile: yup.string().required('Mobile Is Required'),
     password: yup.string().required('Password Is Required'),
@@ -65,7 +65,7 @@ const UserManagement = () => {
                           <Formik
                             enableReinitialize
                             initialValues={{
-                              userId: '',
+                              id: '',
                               userName: '',
                               email: '',
                               mobile: '',
@@ -79,20 +79,21 @@ const UserManagement = () => {
                             validationSchema={validationSchema}
                             onSubmit={onSubmit}
                           >
-                            {({ isSubmitting, values, setFieldValue }) =>(<Form>
+                            {({ isSubmitting, values, setFieldValue }) =>(
+                              <Form>
                                 <Row>
                                   <Col md={6}>
                                     <Row className="mb-3">
                                       <label
-                                        htmlFor="userId"
+                                        htmlFor="id"
                                         className="col-lg-3 col-form-label"
                                       >
                                         User ID
                                       </label>
                                       <div className="col-lg-9">
                                         <Field
-                                          id="userId"
-                                          name="userId"
+                                          id="id"
+                                          name="id"
                                           type="text"
                                           className="form-control"
                                           placeholder="user id here "

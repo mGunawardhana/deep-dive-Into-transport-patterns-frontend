@@ -2,14 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 // mui imports
-import {
-  ListItemIcon,
-  ListItem,
-  List,
-  styled,
-  ListItemText,
-  useTheme
-} from '@mui/material';
+import { List, ListItem, ListItemIcon, ListItemText, styled, useTheme } from '@mui/material';
 
 const NavItem = ({ item, level, pathDirect, onClick }) => {
   const Icon = item.icon;
@@ -22,25 +15,20 @@ const NavItem = ({ item, level, pathDirect, onClick }) => {
     padding: '8px 10px',
     borderRadius: '8px',
     backgroundColor: level > 1 ? 'transparent !important' : 'inherit',
-    color:
-      theme.palette.text.secondary,
+    color: theme.palette.text.secondary,
     paddingLeft: '10px',
     '&:hover': {
-      backgroundColor: theme.palette.primary.light,
-      color: theme.palette.primary.main,
+      backgroundColor: theme.palette.success.light,
+      color: theme.palette.success.main,
     },
     '&.Mui-selected': {
-      color: 'white',
-      backgroundColor: theme.palette.primary.main,
-      '&:hover': {
-        backgroundColor: theme.palette.primary.main,
-        color: 'white',
+      color: 'white', backgroundColor: theme.palette.success.main, '&:hover': {
+        backgroundColor: theme.palette.success.dark, color: 'white',
       },
     },
   }));
 
-  return (
-    <List component="li" disablePadding key={item.id}>
+  return (<List component="li" disablePadding key={item.id}>
       <ListItemStyled
         button
         component={item.external ? 'a' : NavLink}
@@ -53,9 +41,7 @@ const NavItem = ({ item, level, pathDirect, onClick }) => {
       >
         <ListItemIcon
           sx={{
-            minWidth: '36px',
-            p: '3px 0',
-            color: 'inherit',
+            minWidth: '36px', p: '3px 0', color: 'inherit',
           }}
         >
           {itemIcon}
@@ -64,14 +50,11 @@ const NavItem = ({ item, level, pathDirect, onClick }) => {
           <>{item.title}</>
         </ListItemText>
       </ListItemStyled>
-    </List>
-  );
+    </List>);
 };
 
 NavItem.propTypes = {
-  item: PropTypes.object,
-  level: PropTypes.number,
-  pathDirect: PropTypes.any,
+  item: PropTypes.object, level: PropTypes.number, pathDirect: PropTypes.any,
 };
 
 export default NavItem;

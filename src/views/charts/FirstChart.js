@@ -1,5 +1,5 @@
-import React from 'react'
-import Chart from 'chart.js/auto';
+import React from 'react';
+// import Chart from 'chart.js/auto';
 import DashboardCard from '../../components/shared/DashboardCard';
 
 const FirstChart = () => {
@@ -7,7 +7,7 @@ const FirstChart = () => {
     <div>
       <DashboardCard>Hello</DashboardCard>
     </div>
-  )
-}
+  );
+};
 
-export default FirstChart
+export default FirstChart;

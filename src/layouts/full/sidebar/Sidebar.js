@@ -5,7 +5,7 @@ import SidebarItems from './SidebarItems';
 const Sidebar = (props) => {
   const lgUp = useMediaQuery((theme) => theme.breakpoints.up('lg'));
 
-  const sidebarWidth = '270px';
+  const sidebarWidth = '280px';
 
   if (lgUp) {
     return (

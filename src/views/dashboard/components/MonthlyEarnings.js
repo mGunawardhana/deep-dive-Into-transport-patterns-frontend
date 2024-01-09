@@ -8,7 +8,7 @@ import DashboardCard from '../../../components/shared/DashboardCard';
 const MonthlyEarnings = () => {
   // chart color
   const theme = useTheme();
-  const secondary = theme.palette.secondary.main;
+  const secondary = theme.palette.success.main;
   const secondarylight = '#f5fcff';
   const errorlight = '#fdede8';
 

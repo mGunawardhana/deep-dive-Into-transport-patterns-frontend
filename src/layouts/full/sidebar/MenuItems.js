@@ -31,20 +31,20 @@ const Menuitems = [
     id: uniqueId(),
     title: 'Chart 01',
     icon: IconChartBubble,
-    href: '#',
+    href: '/system/chart',
   },
   {
     id: uniqueId(),
     title: 'Chart 02',
     icon: IconChartLine,
-    href: '#',
+    href: '/system/chart-two',
   },
   {
     id: uniqueId(),
     title: 'Chart 03',
     icon: IconChartBar,
-    href: '#',
-  }
+    href: '/system/chart-three',
+  },
 ];
 
 export default Menuitems;
