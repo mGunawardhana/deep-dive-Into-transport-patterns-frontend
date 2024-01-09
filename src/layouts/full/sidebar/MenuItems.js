@@ -19,7 +19,7 @@ const Menuitems = [
   },
   {
     id: uniqueId(),
-    title: 'User Management',
+    title: 'My Account',
     icon: IconChartBubble,
     href: '/system/user',
   },

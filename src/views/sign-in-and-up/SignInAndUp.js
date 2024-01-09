@@ -21,7 +21,7 @@ const SignInAndUp = () => {
   const formSubmitManually = async (values) => {
     try {
       const response = await saveUser(values);
-      console.log("values ***************************** ");
+      console.log("values ***************************** "+response);
       console.log(values);
       toast.success("Successfully Insert");
       navigateToDashboard();
@@ -100,7 +100,7 @@ const SignInAndUp = () => {
           <span>or use your account</span>
           <input className="input" id="email" name="email" placeholder="Email" type="email" />
           <input className="input" placeholder="Password" id="password" name="password" type="password" />
-          <a href="#">Forgot your password?</a>
+          <a href>Forgot your password?</a>
           <button type="submit">Sign In</button>
         </form>
       </div>

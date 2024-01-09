@@ -1,9 +1,12 @@
 import React from 'react'
-import Chart from 'chart.js/auto';
+import ChartThree from '../dashboard/components/ChartThree';
+import DashboardCard from '../../components/shared/DashboardCard';
 
 const ThirdChart = () => {
   return (
-    <div>ThirdChart</div>
+    <DashboardCard>
+      <ChartThree/>
+    </DashboardCard>
   )
 }
 

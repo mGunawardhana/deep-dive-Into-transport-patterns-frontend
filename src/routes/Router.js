@@ -12,7 +12,7 @@ const BlankLayout = Loadable(lazy(() => import('../layouts/blank/BlankLayout')))
 
 /* ****Pages***** */
 const Dashboard = Loadable(lazy(() => import('../views/dashboard/Dashboard')));
-const Icons = Loadable(lazy(() => import('../views/icons/Icons')));
+// const Icons = Loadable(lazy(() => import('../views/icons/Icons')));
 // const TypographyPage = Loadable(lazy(() => import('../views/utilities/TypographyPage')));
 // const Shadow = Loadable(lazy(() => import('../views/utilities/Shadow')));
 const Error = Loadable(lazy(() => import('../views/authentication/Error')));
