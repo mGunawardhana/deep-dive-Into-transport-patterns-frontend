@@ -1,18 +1,39 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Chart from 'chart.js/auto';
+import { fetchAllAnalyzedData, getAllUsers } from '../../../service/service';
+import { toast } from 'react-toastify';
 
 const ChartTwo = () => {
+
+    const [chartData, setChartData] = useState({ Day: [], Frequency: [] });
+
+    const fetchAllAnalyzedDataFunc = async () => {
+        try {
+            const response = await fetchAllAnalyzedData();
+            console.log("fetched data");
+            console.log(response.Day);
+            console.log(response.Frequency);
+            setChartData(response);
+        } catch (error) {
+            toast.error('Error');
+        }
+    };
+
     const chartRef = useRef(null);
 
     useEffect(() => {
+        // fetchAllAnalyzedDataFunc();
+
         if (chartRef.current) {
             const myChart = new Chart(chartRef.current, {
                 type: 'pie',
                 data: {
-                    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                    // labels:chartData.Day,
+                    labels: ['1','2','3','4','5','6'],
                     datasets: [{
-                        label: 'Bar Chart',
-                        data: [12, 19, 3, 5, 8, 3],
+                        label: 'Pie Chart',
+                        // data: chartData.Frequency,
+                        data: [1,2,3,4,5,6],
                         borderWidth: 1,
                         backgroundColor: [
                             'rgba(255, 99, 132, 0.2)',
@@ -41,19 +62,16 @@ const ChartTwo = () => {
                 }
             });
 
-
-
             return () => {
-
                 myChart.destroy();
             };
         }
-    }, [chartRef]);
+    }, [chartRef, chartData]);
 
     return (
-        <div style={{ width: '35vw' }}>
-            <canvas ref={chartRef}> </canvas>
-        </div>
+      <div style={{ width: '35vw' }}>
+          <canvas ref={chartRef}></canvas>
+      </div>
     );
 };
 

@@ -1,16 +1,34 @@
-import React from 'react';
-// import Chart from 'chart.js/auto';
-import DashboardCard from '../../components/shared/DashboardCard';
+import React, { useState, useEffect } from 'react';
 import ChartOne from '../dashboard/components/ChartOne';
+import { fetchAllAnalyzedData } from '../../service/service';
+import { toast } from 'react-toastify';
+import DashboardCard from '../../components/shared/DashboardCard';
 
-const FirstChart = () => {
+const App = () => {
+  const [chartData, setChartData] = useState({ Day: [], Frequency: [] });
+
+  useEffect(() => {
+    fetchAllAnalyzedDataFunc().then(() => {console.log("Fetched data")} );
+  }, []);
+
+  const fetchAllAnalyzedDataFunc = async () => {
+    try {
+      const response = await fetchAllAnalyzedData();
+      console.log("Fetched data:", response);
+      setChartData(response);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      toast.error('Error fetching data');
+    }
+  };
+
+  const base64String = chartData.image_data || '';
+
   return (
-    <div>
-      <DashboardCard>
-        <ChartOne/>
-      </DashboardCard>
-    </div>
+    <DashboardCard>
+      <ChartOne base64String={base64String} />
+    </DashboardCard>
   );
 };
 
-export default FirstChart;
+export default App;
