@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ChartOne from '../dashboard/components/ChartOne';
-import { fetchAllAnalyzedData } from '../../service/service';
+import { fetchAllAnalyzedDataByDay } from '../../service/service';
 import { toast } from 'react-toastify';
 import DashboardCard from '../../components/shared/DashboardCard';
 
@@ -13,7 +13,7 @@ const App = () => {
 
   const fetchAllAnalyzedDataFunc = async () => {
     try {
-      const response = await fetchAllAnalyzedData();
+      const response = await fetchAllAnalyzedDataByDay();
       console.log("Fetched data:", response);
       setChartData(response);
     } catch (error) {
