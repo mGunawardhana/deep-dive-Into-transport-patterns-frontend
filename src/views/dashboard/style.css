@@ -1,23 +1,58 @@
+.parent-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+}
+
 .loader {
     position: relative;
-    width: 85px;
-    height: 50px;
-    background-repeat: no-repeat;
-    background-image: linear-gradient(#118d3c 50px, transparent 0),
-    linear-gradient(#19570f 50px, transparent 0),
-    linear-gradient(#FFF 50px, transparent 0),
-    linear-gradient(#FFF 50px, transparent 0),
-    linear-gradient(#FFF 50px, transparent 0),
-    linear-gradient(#FFF 50px, transparent 0);
-    background-position: 0px center, 15px center, 30px center, 45px center, 60px center, 75px center, 90px center;
-    animation: rikSpikeRoll 0.65s linear infinite alternate;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 6rem;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
 }
-@keyframes rikSpikeRoll {
-    0% { background-size: 10px 3px;}
-    16% { background-size: 10px 50px, 10px 3px, 10px 3px, 10px 3px, 10px 3px, 10px 3px}
-    33% { background-size: 10px 30px, 10px 50px, 10px 3px, 10px 3px, 10px 3px, 10px 3px}
-    50% { background-size: 10px 10px, 10px 30px, 10px 50px, 10px 3px, 10px 3px, 10px 3px}
-    66% { background-size: 10px 3px, 10px 10px, 10px 30px, 10px 50px, 10px 3px, 10px 3px}
-    83% { background-size: 10px 3px, 10px 3px,  10px 10px, 10px 30px, 10px 50px, 10px 3px}
-    100% { background-size: 10px 3px, 10px 3px, 10px 3px,  10px 10px, 10px 30px, 10px 50px}
+.loader:before,
+.loader:after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    animation: pulsOut 1.0s ease-in-out infinite;
+    filter: drop-shadow(0 0 2rem rgb(22, 160, 133));
+}
+.loader:before {
+    width: 100%;
+    padding-bottom: 100%;
+    box-shadow: inset 0 0 0 1rem #16a085;
+    animation-name: pulsIn;
+}
+.loader:after {
+    width: calc(100% - 2rem);
+    padding-bottom: calc(100% - 2rem);
+    box-shadow: 0 0 0 0 #16a085;
+}
+
+@keyframes pulsIn {
+    0% {
+        box-shadow: inset 0 0 0 1rem #16a085;
+        opacity: 1;
+    }
+    50%, 100% {
+        box-shadow: inset 0 0 0 0 #16a085;
+        opacity: 0;
+    }
+}
+
+@keyframes pulsOut {
+    0%, 50% {
+        box-shadow: 0 0 0 0 #16a085;
+        opacity: 0;
+    }
+    100% {
+        box-shadow: 0 0 0 1rem #16a085;
+        opacity: 1;
+    }
 }

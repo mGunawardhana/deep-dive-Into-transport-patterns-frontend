@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import loaderImage from '../../../assets/loader.gif';
 
 const ChartTwo = ({ base64String }) => {
     const [imageSrc, setImageSrc] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         const decodeBase64 = () => {
@@ -21,7 +21,10 @@ const ChartTwo = ({ base64String }) => {
                 const blob = new Blob([arrayBuffer], { type: mime });
                 const dataUrl = URL.createObjectURL(blob);
 
-                setImageSrc(dataUrl);
+                setTimeout(() => {
+                    setImageSrc(dataUrl);
+                    setIsLoading(false);
+                }, 5000);
 
                 return () => URL.revokeObjectURL(dataUrl);
             } catch (error) {
@@ -36,10 +39,12 @@ const ChartTwo = ({ base64String }) => {
 
     return (
       <div style={{ width: '40vw' }}>
-          {imageSrc ? (
-            <img src={imageSrc} alt="Base64 Image" />
+          {isLoading ? (
+            <div className="parent-container">
+                <div className="loader"></div>
+            </div>
           ) : (
-            <img src={loaderImage} alt="Loader" />
+            <img src={imageSrc} alt="Base64 Image" />
           )}
       </div>
     );

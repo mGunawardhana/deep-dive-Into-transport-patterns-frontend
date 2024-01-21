@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types'; // Import PropTypes for type checking
+import PropTypes from 'prop-types';
 import '../style.css'
-import loaderImage from '../../../assets/loader.gif';
+
 const Base64Image = ({ base64String }) => {
   const [imageSrc, setImageSrc] = useState(null);
 
@@ -40,7 +40,9 @@ const Base64Image = ({ base64String }) => {
       {imageSrc ? (
         <img src={imageSrc} alt="Base64 Image" />
       ) : (
-        <div className="loader"></div>
+        <div className="parent-container">
+          <div className="loader"></div>
+        </div>
       )}
     </div>
   );

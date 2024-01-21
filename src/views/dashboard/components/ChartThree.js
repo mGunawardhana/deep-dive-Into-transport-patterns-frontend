@@ -1,71 +1,54 @@
-import React, { useEffect, useRef } from 'react';
-import Chart from 'chart.js/auto';
+import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
+import '../style.css';
 
-const ChartThree = () => {
-    const chartRef = useRef(null);
+const ChartThree = ({ base64String }) => {
+    const [imageSrc, setImageSrc] = useState(null);
 
     useEffect(() => {
-        if (chartRef.current) {
-            const myChart = new Chart(chartRef.current, {
-                type: 'bubble',
-                data: {
-                    datasets: [{
-                        label: 'Bubble Chart',
-                        data: [
-                            { x: 10, y: 20, r: 5 },
-                            { x: 15, y: 10, r: 8 },
-                            { x: 25, y: 18, r: 6 },
-                            { x: 7, y: 15, r: 10 },
-                            { x: 30, y: 12, r: 7 },
-                            { x: 18, y: 25, r: 8 },
-                        ],
-                        backgroundColor: [
-                            'rgba(255, 99, 132, 0.6)',
-                            'rgba(54, 162, 235, 0.6)',
-                            'rgba(255, 206, 86, 0.6)',
-                            'rgba(75, 192, 192, 0.6)',
-                            'rgba(153, 102, 255, 0.6)',
-                            'rgba(255, 159, 64, 0.6)',
-                        ],
-                        borderColor: [
-                            'rgba(255, 99, 132, 1)',
-                            'rgba(54, 162, 235, 1)',
-                            'rgba(255, 206, 86, 1)',
-                            'rgba(75, 192, 192, 1)',
-                            'rgba(153, 102, 255, 1)',
-                            'rgba(255, 159, 64, 1)',
-                        ],
-                    }]
-                },
-                options: {
-                    scales: {
-                        x: {
-                            type: 'linear',
-                            position: 'bottom'
-                        },
-                        y: {
-                            type: 'linear',
-                            position: 'left',
-                            beginAtZero: true
-                        }
-                    }
+        const decodeBase64 = () => {
+            try {
+                const binaryData = atob(base64String);
+
+                const mime = 'image/png';
+                const arrayBuffer = new ArrayBuffer(binaryData.length);
+                const uint8Array = new Uint8Array(arrayBuffer);
+
+                for (let i = 0; i < binaryData.length; i++) {
+                    uint8Array[i] = binaryData.charCodeAt(i);
                 }
-            });
 
+                const blob = new Blob([arrayBuffer], { type: mime });
+                const dataUrl = URL.createObjectURL(blob);
 
+                setImageSrc(dataUrl);
 
-            return () => {
+                return () => URL.revokeObjectURL(dataUrl);
+            } catch (error) {
+                console.error('Error decoding base64 string:', error);
+            }
+        };
 
-                myChart.destroy();
-            };
+        if (base64String) {
+            decodeBase64();
         }
-    }, [chartRef]);
+    }, [base64String]);
 
     return (
-        <div style={{ width: '50vw' }}>
-            <canvas ref={chartRef}> </canvas>
-        </div>
+      <div style={{ width: '40vw' }}>
+          {imageSrc ? (
+            <img src={imageSrc} alt="Base64 Image" />
+          ) : (
+            <div className="parent-container">
+                <div className="loader"></div>
+            </div>
+          )}
+      </div>
     );
+};
+
+ChartThree.propTypes = {
+    base64String: PropTypes.string.isRequired,
 };
 
 export default ChartThree;

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ChartOne from '../dashboard/components/ChartOne';
-import { fetchAllAnalyzedDataByDay } from '../../service/service';
+import { FetchAllAnalyzedDataByBubbleMap } from '../../service/service';
 import { toast } from 'react-toastify';
 import DashboardCard from '../../components/shared/DashboardCard';
 
@@ -13,11 +13,9 @@ const App = () => {
 
   const fetchAllAnalyzedDataFunc = async () => {
     try {
-      const response = await fetchAllAnalyzedDataByDay();
-      console.log("Fetched data:", response);
+      const response = await FetchAllAnalyzedDataByBubbleMap();
       setChartData(response);
     } catch (error) {
-      console.error('Error fetching data:', error);
       toast.error('Error fetching data');
     }
   };
