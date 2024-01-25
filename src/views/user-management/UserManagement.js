@@ -4,31 +4,43 @@ import { Form, Formik, Field, ErrorMessage } from 'formik';
 import 'react-toastify/dist/ReactToastify.css';
 import { Button, Card, CardBody, Col, Container, Row, TabContent, TabPane } from 'reactstrap';
 import { toast } from 'react-toastify';
-import { updateUser } from '../../service/service';
+import { fetchAllUsers, updateUser } from '../../service/service';
 
 const UserManagement = () => {
-  const [formSubmitData, setFormSubmitData] = useState([]);
+  const [formSubmitData, setFormSubmitData] = useState({});
+  const [localStorageData, setLocalStorageData] = useState({});
 
   useEffect(() => {
-    var retrievedValue = localStorage.getItem('id');
-    console.log('retrievedValue: ', retrievedValue);
-    console.log(retrievedValue);
-  });
+    const data = localStorage.getItem('id');
+    try {
+      const response = fetchAllUsers();
+      response.then((result) => {
+        for (let resp of result.data) {
+          if (resp.id === data) {
+            setLocalStorageData(resp);
+            return;
+          }
+        }
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
 
   const formSubmitManually = async (value) => {
-    const data = { ...formSubmitData, registerUser: value };
     try {
-      const response = await updateUser(data);
+      const response = await updateUser({ ...formSubmitData, registerUser: value });
       console.log(response);
       toast.success('Successfully Insert');
     } catch (error) {
       toast.error('Error');
     }
   };
+
   const onSubmit = async (values) => {
     const data = {
       id: values.id,
-      name: values.name,
+      name: values.userName,
       email: values.email,
       mobile: values.mobile,
       password: values.password,
@@ -44,7 +56,7 @@ const UserManagement = () => {
 
   const validationSchema = yup.object().shape({
     id: yup.string().required('User ID Is Required'),
-    name: yup.string().required('User Name Is Required'),
+    userName: yup.string().required('User Name Is Required'),
     email: yup.string().required('Email Is Required'),
     mobile: yup.string().required('Mobile Is Required'),
     password: yup.string().required('Password Is Required'),
@@ -73,7 +85,6 @@ const UserManagement = () => {
                 }}
               >
                 <Card style={{ boxShadow: 'rgb(38, 57, 77) 0px 20px 30px -10px', width: '90vw' }}>
-                  {' '}
                   <CardBody className="outline-none">
                     <h4 className="card-title mb-4">User Management Form</h4>
                     <div className="form-horizontal form-wizard-wrapper wizard clearfix">
@@ -83,9 +94,9 @@ const UserManagement = () => {
                             <Formik
                               enableReinitialize
                               initialValues={{
-                                id: '',
-                                userName: '',
-                                email: '',
+                                id: localStorageData.id || '',
+                                userName: localStorageData.name || '',
+                                email: localStorageData.email || '',
                                 mobile: '',
                                 password: '',
                                 re_type_password: '',
@@ -110,8 +121,9 @@ const UserManagement = () => {
                                             id="id"
                                             name="id"
                                             type="text"
+                                            disabled
                                             className="form-control"
-                                            placeholder="user id here "
+                                            placeholder="user id here"
                                           />
                                         </div>
                                       </Row>
@@ -166,7 +178,7 @@ const UserManagement = () => {
                                     <Col md={6}>
                                       <Row className="mb-3">
                                         <label htmlFor="mobile" className="col-lg-3 col-form-label">
-                                          Mobile No <span style={{ color: 'red' }}> *</span>
+                                          Mobile No<span style={{ color: 'red' }}> *</span>
                                         </label>
                                         <div className="col-lg-9">
                                           <Field
@@ -288,7 +300,7 @@ const UserManagement = () => {
                                           htmlFor="address"
                                           className="col-lg-3 col-form-label"
                                         >
-                                          Address <span style={{ color: 'red' }}> *</span>
+                                          Address<span style={{ color: 'red' }}> *</span>
                                         </label>
                                         <div className="col-lg-9">
                                           <Field
@@ -324,35 +336,37 @@ const UserManagement = () => {
                                         </div>
                                       </Row>
                                     </Col>
-                                    <div className="ml-[100px] mt-[0px] pb-[15px]">
-                                      <Button
-                                        onClick={() => formSubmitManually(values)}
-                                        id="saveBtn"
-                                        style={{
-                                          backgroundColor: '#039b48',
-                                          marginRight: '7px',
-                                          fontWeight: 'bolder',
-                                          border: 'none',
-                                        }}
-                                        variant="contained"
-                                        type="submit"
-                                        size="small"
-                                      >
-                                        Register
-                                      </Button>
-                                      <Button
-                                        style={{
-                                          backgroundColor: '#ff4757',
-                                          marginRight: '7px',
-                                          fontWeight: 'bolder',
-                                          border: 'none',
-                                        }}
-                                        variant="contained"
-                                        type="submit"
-                                      >
-                                        Cancel
-                                      </Button>
-                                    </div>
+                                    <Col md={12}>
+                                      <div className="ml-[100px] mt-[0px] pb-[15px]">
+                                        <Button
+                                          onClick={() => formSubmitManually(values)}
+                                          id="saveBtn"
+                                          style={{
+                                            backgroundColor: '#039b48',
+                                            marginRight: '7px',
+                                            fontWeight: 'bolder',
+                                            border: 'none',
+                                          }}
+                                          variant="contained"
+                                          type="button"
+                                          size="small"
+                                        >
+                                          Register
+                                        </Button>
+                                        <Button
+                                          style={{
+                                            backgroundColor: '#ff4757',
+                                            marginRight: '7px',
+                                            fontWeight: 'bolder',
+                                            border: 'none',
+                                          }}
+                                          variant="contained"
+                                          type="submit"
+                                        >
+                                          Cancel
+                                        </Button>
+                                      </div>
+                                    </Col>
                                   </Row>
                                 </Form>
                               )}
