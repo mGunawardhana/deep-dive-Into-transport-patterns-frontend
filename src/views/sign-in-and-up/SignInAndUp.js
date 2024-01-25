@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import '../sign-in-and-up/SignInAndUp.css';
 import googleIcon from '../../assets/icons8-google-48.png';
 import facebookIcon from '../../assets/icons8-facebook-48.png';
@@ -8,7 +8,7 @@ import { toast } from 'react-toastify';
 import { Field, Form, Formik } from 'formik';
 import * as yup from 'yup';
 import { Button } from 'reactstrap';
-import { fetchAllUsers, getAllUsers, saveUser } from '../../service/service';
+import { fetchAllUsers, saveUser } from '../../service/service';
 
 const SignInAndUp = () => {
   const containerRef = useRef(null);
@@ -17,13 +17,19 @@ const SignInAndUp = () => {
   const navigateToDashboard = () => {
     navigate('/system/dashboard');
   };
+  // useEffect(() => {
+  //   const response = fetchAllUsers();
+  //   console.log(response);
+  // });
 
   const getAllUsersFunc = async (values) => {
     try {
-      const response =  fetchAllUsers();
+      const response = fetchAllUsers();
       response.then((result) => {
         for (let resp of result.data) {
+          console.log(resp);
           if (resp.email === values.new_email && resp.password === values.new_password) {
+            localStorage.setItem('id', resp.id);
             console.log('Successfully Login');
             navigateToDashboard();
             return;

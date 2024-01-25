@@ -1,6 +1,7 @@
-import { get, post } from './api_helpers';
+import { get, post, put } from './api_helpers';
 
 export const saveUser = (data) => post('http://127.0.0.1:8001/create-user', data);
+export const updateUser = (data) => put('http://127.0.0.1:8001/', data);
 export const fetchAllUsers = () => get('http://127.0.0.1:8001/fetch-all-users');
 export const FetchAllAnalyzedDataByBubbleMap = () => get('http://127.0.0.1:8000/level-one/optimised/data/visualise/bubble-map');
 export const FetchAllAnalyzedDataByHour = () => get('http://127.0.0.1:8000/level-one/optimised/data/visualise/hour');

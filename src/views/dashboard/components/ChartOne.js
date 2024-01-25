@@ -38,7 +38,7 @@ const Base64Image = ({ base64String }) => {
   return (
     <div style={{ width: '40vw' }}>
       {imageSrc ? (
-        <img src={imageSrc} alt="Base64 Image" />
+        <img src={imageSrc} alt=""/>
       ) : (
         <div className="parent-container">
           <div className="loader"></div>

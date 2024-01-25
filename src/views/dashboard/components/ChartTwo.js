@@ -44,7 +44,7 @@ const ChartTwo = ({ base64String }) => {
                 <div className="loader"></div>
             </div>
           ) : (
-            <img src={imageSrc} alt="Base64 Image" />
+            <img src={imageSrc} alt="" />
           )}
       </div>
     );
