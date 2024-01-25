@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/deep-dive-Into-transport-patterns-frontend/static/css/main.fc73ca32.css",
+    "main.js": "/deep-dive-Into-transport-patterns-frontend/static/js/main.5cd9e544.js",
+    "static/js/506.298fc798.chunk.js": "/deep-dive-Into-transport-patterns-frontend/static/js/506.298fc798.chunk.js",
+    "static/js/900.b16c7c7b.chunk.js": "/deep-dive-Into-transport-patterns-frontend/static/js/900.b16c7c7b.chunk.js",
+    "static/js/543.10887a76.chunk.js": "/deep-dive-Into-transport-patterns-frontend/static/js/543.10887a76.chunk.js",
+    "static/js/609.5a233eb7.chunk.js": "/deep-dive-Into-transport-patterns-frontend/static/js/609.5a233eb7.chunk.js",
+    "static/js/14.fcdce4a5.chunk.js": "/deep-dive-Into-transport-patterns-frontend/static/js/14.fcdce4a5.chunk.js",
+    "static/js/260.631d1f9b.chunk.js": "/deep-dive-Into-transport-patterns-frontend/static/js/260.631d1f9b.chunk.js",
+    "static/js/898.655bbed5.chunk.js": "/deep-dive-Into-transport-patterns-frontend/static/js/898.655bbed5.chunk.js",
+    "static/js/620.ccf0e49d.chunk.js": "/deep-dive-Into-transport-patterns-frontend/static/js/620.ccf0e49d.chunk.js",
+    "static/media/404-error-idea.gif": "/deep-dive-Into-transport-patterns-frontend/static/media/404-error-idea.a65b475afb310d2c0c4e.gif",
+    "static/media/dark-logo.svg": "/deep-dive-Into-transport-patterns-frontend/static/media/dark-logo.255b7718859f83c103bce0d641484d41.svg",
+    "index.html": "/deep-dive-Into-transport-patterns-frontend/index.html"
+  },
+  "entrypoints": [
+    "static/css/main.fc73ca32.css",
+    "static/js/main.5cd9e544.js"
+  ]
+}
