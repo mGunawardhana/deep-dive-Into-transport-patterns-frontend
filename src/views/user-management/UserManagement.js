@@ -12,24 +12,21 @@ const UserManagement = () => {
 
   useEffect(() => {
     const data = localStorage.getItem('id');
-    try {
-      const response = fetchAllUsers();
-      response.then((result) => {
-        for (let resp of result.data) {
-          if (resp.id === data) {
-            setLocalStorageData(resp);
-            return;
-          }
+    fetchAllUsers().then((result) => {
+      for (let resp of result.data) {
+        if (resp.id === data) {
+          setLocalStorageData(resp);
+          return;
         }
-      });
-    } catch (error) {
+      }
+    }).catch((error) => {
       console.log(error);
-    }
+    });
   }, []);
 
   const formSubmitManually = async (value) => {
     try {
-      const response = await updateUser({ ...formSubmitData, registerUser: value });
+      const response = await updateUser({...value, id: localStorage.getItem('id') });
       console.log(response);
       toast.success('Successfully Insert');
     } catch (error) {
@@ -42,14 +39,15 @@ const UserManagement = () => {
       id: values.id,
       name: values.userName,
       email: values.email,
-      mobile: values.mobile,
       password: values.password,
+      mobile: values.mobile,
       re_type_password: values.re_type_password,
       country: values.country,
       country_code: values.country_code,
       address: values.address,
-      note: values.note,
+      notes: values.notes
     };
+    console.log("here is my value")
     console.log(data);
     setFormSubmitData(data);
   };
@@ -67,7 +65,7 @@ const UserManagement = () => {
     country: yup.string().required('Country Is Required'),
     country_code: yup.string().required('Country Code Is Required'),
     address: yup.string().required('Address Is Required'),
-    note: yup.string().required('Note Is Required'),
+    notes: yup.string().required('Note Is Required'),
   });
 
   return (
@@ -103,7 +101,7 @@ const UserManagement = () => {
                                 country: '',
                                 country_code: '',
                                 address: '',
-                                note: '',
+                                notes: '',
                               }}
                               validationSchema={validationSchema}
                               onSubmit={onSubmit}
@@ -321,14 +319,14 @@ const UserManagement = () => {
                                     </Col>
                                     <Col md={6}>
                                       <Row className="mb-3">
-                                        <label htmlFor="note" className="col-lg-3 col-form-label">
+                                        <label htmlFor="notes" className="col-lg-3 col-form-label">
                                           Note
                                         </label>
                                         <div className="col-lg-9">
                                           <Field
                                             as="textarea"
-                                            id="note"
-                                            name="note"
+                                            id="notes"
+                                            name="notes"
                                             rows="4"
                                             className="form-control"
                                             placeholder="Note here"

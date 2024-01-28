@@ -1,15 +1,26 @@
 import axios from 'axios';
 
-//apply base url for axios
-const API_URL = 'http://127.0.0.1:8000/';
+const API_URLS = [
+  'http://127.0.0.1:8000/',
+  'http://127.0.0.1:8001/',
+];
+
+function getRandomBaseUrl() {
+  return API_URLS[Math.floor(Math.random() * API_URLS.length)];
+}
 
 const axiosApi = axios.create({
-  baseURL: API_URL,
+  baseURL: getRandomBaseUrl(),
   headers: {
     'Content-Type': 'application/json',
     'Access-Control-Allow-Headers': '*',
     allowedHeaders: '*',
   },
+});
+
+axiosApi.interceptors.request.use((config) => {
+  config.baseURL = getRandomBaseUrl();
+  return config;
 });
 
 export async function get(url, config = {}) {
