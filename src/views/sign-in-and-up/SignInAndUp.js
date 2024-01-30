@@ -114,7 +114,7 @@ const SignInAndUp = () => {
               <Field className="input" placeholder="Name" type="text" name="name" />
               <Field className="input" placeholder="Email" type="email" name="email" />
               <Field className="input" placeholder="Password" type="password" name="password" />
-              <Button type="submit" disabled={isSubmitting}>
+              <Button className="buttons" type="submit" disabled={isSubmitting}>
                 Sign Up
               </Button>
             </Form>
@@ -155,7 +155,7 @@ const SignInAndUp = () => {
                 type="password"
               />
               <a href="/forgot-password">Forgot your password?</a>
-              <Button type="submit" disabled={isSubmitting}>
+              <Button className="buttons" type="submit" disabled={isSubmitting}>
                 Sign In
               </Button>
             </Form>
@@ -169,14 +169,14 @@ const SignInAndUp = () => {
             <p style={{ fontSize: '16px', fontWeight: '800' }}>
               To keep connected with us, please login with your personal info
             </p>
-            <button className="ghost" id="signIn">
+            <button className="buttons ghost" id="signIn">
               Sign In
             </button>
           </div>
           <div className="overlay-panel overlay-right">
             <h3>Hello, aboard!</h3>
             <p style={{ fontSize: '16px', fontWeight: '800' }}>Welcome to the system.</p>
-            <button className="ghost" id="signUp">
+            <button className="buttons ghost" id="signUp">
               Sign Up
             </button>
           </div>

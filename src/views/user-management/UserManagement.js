@@ -340,7 +340,7 @@ const UserManagement = () => {
                                           onClick={() => formSubmitManually(values)}
                                           id="saveBtn"
                                           style={{
-                                            backgroundColor: '#039b48',
+                                            backgroundColor: '#27ae60',
                                             marginRight: '7px',
                                             fontWeight: 'bolder',
                                             border: 'none',
@@ -349,7 +349,7 @@ const UserManagement = () => {
                                           type="button"
                                           size="small"
                                         >
-                                          Register
+                                          Update Profile
                                         </Button>
                                         <Button
                                           style={{
@@ -361,7 +361,7 @@ const UserManagement = () => {
                                           variant="contained"
                                           type="submit"
                                         >
-                                          Cancel
+                                          Delete Account
                                         </Button>
                                       </div>
                                     </Col>

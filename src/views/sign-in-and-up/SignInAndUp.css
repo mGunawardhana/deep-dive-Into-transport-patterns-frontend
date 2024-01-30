@@ -42,7 +42,7 @@ a {
     text-decoration: none;
     margin: 15px 0;
 }
-button {
+.buttons {
     border-radius: 8px;
     border: 3px solid #ffffff;
     background: linear-gradient(
@@ -60,15 +60,15 @@ button {
     transition: transform 80ms ease-in;
 }
 
-button:active {
+.buttons:active {
     transform: scale(0.95);
 }
 
-button:focus {
+.buttons:focus {
     outline: none;
 }
 
-button.ghost {
+.buttons.ghost {
     background-color: transparent;
     border-color: #ffffff;
 }
@@ -240,3 +240,4 @@ button.ghost {
     align-items: center;
     margin: 0 5px;
 }
+
