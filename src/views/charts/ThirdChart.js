@@ -7,7 +7,9 @@ const ThirdChart = () => {
   const [chartData, setChartData] = useState({ Day: [], Frequency: [] });
 
   useEffect(() => {
-    fetchChartDataFunc().then(() => {console.log("Fetched data")} );
+    fetchChartDataFunc().then(() => {
+      console.log('Fetched data');
+    });
   }, []);
 
   const fetchChartDataFunc = async () => {

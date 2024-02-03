@@ -17,10 +17,8 @@ const SignInAndUp = () => {
   const navigateToDashboard = () => {
     navigate('/system/dashboard');
   };
-  // useEffect(() => {
-  //   const response = fetchAllUsers();
-  //   console.log(response);
-  // });
+
+
 
   const getAllUsersFunc = async (values) => {
     try {

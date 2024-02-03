@@ -12,21 +12,23 @@ const UserManagement = () => {
 
   useEffect(() => {
     const data = localStorage.getItem('id');
-    fetchAllUsers().then((result) => {
-      for (let resp of result.data) {
-        if (resp.id === data) {
-          setLocalStorageData(resp);
-          return;
+    fetchAllUsers()
+      .then((result) => {
+        for (let resp of result.data) {
+          if (resp.id === data) {
+            setLocalStorageData(resp);
+            return;
+          }
         }
-      }
-    }).catch((error) => {
-      console.log(error);
-    });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }, []);
 
   const formSubmitManually = async (value) => {
     try {
-      const response = await updateUser({...value, id: localStorage.getItem('id') });
+      const response = await updateUser({ ...value, id: localStorage.getItem('id') });
       console.log(response);
       toast.success('Successfully Insert');
     } catch (error) {
@@ -45,9 +47,9 @@ const UserManagement = () => {
       country: values.country,
       country_code: values.country_code,
       address: values.address,
-      notes: values.notes
+      notes: values.notes,
     };
-    console.log("here is my value")
+    console.log('here is my value');
     console.log(data);
     setFormSubmitData(data);
   };

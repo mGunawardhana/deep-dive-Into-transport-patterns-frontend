@@ -8,7 +8,9 @@ const App = () => {
   const [chartData, setChartData] = useState({ Day: [], Frequency: [] });
 
   useEffect(() => {
-    fetchAllAnalyzedDataFunc().then(() => {console.log("Fetched data")} );
+    fetchAllAnalyzedDataFunc().then(() => {
+      console.log('Fetched data');
+    });
   }, []);
 
   const fetchAllAnalyzedDataFunc = async () => {

@@ -17,7 +17,7 @@ const SecondChart = () => {
       }
     };
 
-    fetchData().then(r =>(console.log("")));
+    fetchData().then((r) => console.log(''));
   }, []);
 
   return (

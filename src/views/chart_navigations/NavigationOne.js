@@ -1,10 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const NavigationOne = () => {
-  return (
-    <div>NavigationOne</div>
-    
-  )
-}
+  return <div>NavigationOne</div>;
+};
 
-export default NavigationOne
+export default NavigationOne;

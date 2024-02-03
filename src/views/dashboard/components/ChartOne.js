@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import '../style.css'
+import '../style.css';
 
 const Base64Image = ({ base64String }) => {
   const [imageSrc, setImageSrc] = useState(null);
@@ -32,13 +32,12 @@ const Base64Image = ({ base64String }) => {
     if (base64String) {
       decodeBase64();
     }
-
   }, [base64String]);
 
   return (
     <div style={{ width: '40vw' }}>
       {imageSrc ? (
-        <img src={imageSrc} alt=""/>
+        <img src={imageSrc} alt="" />
       ) : (
         <div className="parent-container">
           <div className="loader"></div>
