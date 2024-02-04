@@ -18,31 +18,28 @@ const SignInAndUp = () => {
     navigate('/system/dashboard');
   };
 
-
-
   const getAllUsersFunc = async (values) => {
     try {
-      const response = fetchAllUsers();
-      response.then((result) => {
-        for (let resp of result.data) {
-          console.log(resp);
-          if (resp.email === values.new_email && resp.password === values.new_password) {
-            localStorage.setItem('id', resp.id);
-            console.log('Successfully Login');
-            navigateToDashboard();
-            return;
-          }
+      const response = await fetchAllUsers();
+      for (let resp of response.data) {
+        console.log(resp);
+        if (resp.email === values.new_email && resp.password === values.new_password) {
+          localStorage.setItem('id', resp.id);
+          console.log('Successfully Login');
+          navigateToDashboard();
+          return;
         }
-      });
-
+      }
       toast.error('Invalid email or password');
     } catch (error) {
       toast.error('Error');
     }
   };
 
+
   const formSubmitManually = async (values) => {
     try {
+      console.log(values)
       const response = await saveUser(values);
       console.log('Response from saveUser:', response);
       toast.success('Successfully Insert');
