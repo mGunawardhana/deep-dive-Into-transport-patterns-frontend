@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import ChartOne from '../dashboard/components/ChartOne';
 import { FetchAllAnalyzedDataByBubbleMap } from '../../service/service';
 import { toast } from 'react-toastify';
@@ -24,11 +24,14 @@ const App = () => {
 
   const base64String = chartData.image_data || '';
 
-  return (
-    <DashboardCard>
+  return (<DashboardCard>
       <ChartOne base64String={base64String} />
-    </DashboardCard>
-  );
+      <div style={{ width: '800px' }}>
+        <h6>🌎 This chart shows the geographical distribution of Uber trips with day-wise bubbles. The x-axis represents
+          the longitude and the y-axis represents the latitude. The size and color of the bubbles indicate the day of
+          the month.</h6>
+      </div>
+    </DashboardCard>);
 };
 
 export default App;
