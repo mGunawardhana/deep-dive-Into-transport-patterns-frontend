@@ -7,12 +7,10 @@ import { baselightTheme } from './theme/DefaultColors';
 function App() {
   const routing = useRoutes(Router);
   const theme = baselightTheme;
-  return (
-    <ThemeProvider theme={theme}>
+  return (<ThemeProvider theme={theme}>
       <CssBaseline />
       {routing}
-    </ThemeProvider>
-  );
+    </ThemeProvider>);
 }
 
 export default App;

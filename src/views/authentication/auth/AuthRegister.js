@@ -1,17 +1,14 @@
 import React from 'react';
-import { Box, Typography, Button } from '@mui/material';
+import { Box, Button, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
 
 import CustomTextField from '../../../components/forms/theme-elements/CustomTextField';
 import { Stack } from '@mui/system';
 
-const AuthRegister = ({ title, subtitle, subtext }) => (
-  <>
-    {title ? (
-      <Typography fontWeight="700" variant="h2" mb={1}>
+const AuthRegister = ({ title, subtitle, subtext }) => (<>
+    {title ? (<Typography fontWeight="700" variant="h2" mb={1}>
         {title}
-      </Typography>
-    ) : null}
+      </Typography>) : null}
 
     {subtext}
 
@@ -58,7 +55,6 @@ const AuthRegister = ({ title, subtitle, subtext }) => (
       </Button>
     </Box>
     {subtitle}
-  </>
-);
+  </>);
 
 export default AuthRegister;

@@ -17,31 +17,30 @@ const Dashboard = Loadable(lazy(() => import('../views/dashboard/Dashboard')));
 // const Shadow = Loadable(lazy(() => import('../views/utilities/Shadow')));
 const Error = Loadable(lazy(() => import('../views/authentication/Error')));
 
-const Router = [
-  {
-    path: '/system',
-    element: <FullLayout />,
-    children: [
-      { path: '', element: <Navigate to="/system" /> },
-      { path: 'dashboard', exact: true, element: <Dashboard /> },
-      { path: 'chart', exact: true, element: <FirstChart /> },
-      { path: 'chart-two', exact: true, element: <SecondChart /> },
-      { path: 'chart-three', exact: true, element: <ThirdChart /> },
-      { path: 'user', exact: true, element: <UserManagement /> },
-      { path: 'sign-up', exact: true, element: <SignInAndUp /> },
-      { path: '*', element: <Navigate to="/auth/404" /> },
-    ],
-  },
-  {
-    path: '/',
-    element: <BlankLayout />,
-    children: [
-      { path: '/', element: <Navigate to="/sign-in" /> },
-      { path: '/sign-in', exact: true, element: <SignInAndUp /> },
-      { path: '404', element: <Error /> },
-      { path: '*', element: <Navigate to="/auth/404" /> },
-    ],
-  },
-];
+const Router = [{
+  path: '/system',
+  element: <FullLayout />,
+  children: [{ path: '', element: <Navigate to="/system" /> }, {
+    path: 'dashboard',
+    exact: true,
+    element: <Dashboard />,
+  }, { path: 'chart', exact: true, element: <FirstChart /> }, {
+    path: 'chart-two',
+    exact: true,
+    element: <SecondChart />,
+  }, { path: 'chart-three', exact: true, element: <ThirdChart /> }, {
+    path: 'user',
+    exact: true,
+    element: <UserManagement />,
+  }, { path: 'sign-up', exact: true, element: <SignInAndUp /> }, { path: '*', element: <Navigate to="/auth/404" /> }],
+}, {
+  path: '/',
+  element: <BlankLayout />,
+  children: [{ path: '/', element: <Navigate to="/sign-in" /> }, {
+    path: '/sign-in',
+    exact: true,
+    element: <SignInAndUp />,
+  }, { path: '404', element: <Error /> }, { path: '*', element: <Navigate to="/auth/404" /> }],
+}];
 
 export default Router;

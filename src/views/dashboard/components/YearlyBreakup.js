@@ -1,7 +1,7 @@
 import React from 'react';
 import Chart from 'react-apexcharts';
 import { useTheme } from '@mui/material/styles';
-import { Grid, Stack, Typography, Avatar } from '@mui/material';
+import { Avatar, Grid, Stack, Typography } from '@mui/material';
 import { IconArrowUpLeft } from '@tabler/icons';
 
 import DashboardCard from '../../../components/shared/DashboardCard';
@@ -16,53 +16,34 @@ const YearlyBreakup = () => {
   // chart
   const optionscolumnchart = {
     chart: {
-      type: 'donut',
-      fontFamily: "'Plus Jakarta Sans', sans-serif;",
-      foreColor: '#E6FFFA',
-      toolbar: {
+      type: 'donut', fontFamily: '\'Plus Jakarta Sans\', sans-serif;', foreColor: '#E6FFFA', toolbar: {
         show: false,
-      },
-      height: 155,
-    },
-    colors: [primary, primarylight, '#F9F9FD'],
-    plotOptions: {
+      }, height: 155,
+    }, colors: [primary, primarylight, '#F9F9FD'], plotOptions: {
       pie: {
-        startAngle: 0,
-        endAngle: 360,
-        donut: {
-          size: '75%',
-          background: 'transparent',
+        startAngle: 0, endAngle: 360, donut: {
+          size: '75%', background: 'transparent',
         },
       },
-    },
-    tooltip: {
-      theme: theme.palette.mode === 'dark' ? 'dark' : 'light',
-      fillSeriesColor: false,
-    },
-    stroke: {
+    }, tooltip: {
+      theme: theme.palette.mode === 'dark' ? 'dark' : 'light', fillSeriesColor: false,
+    }, stroke: {
       show: false,
-    },
-    dataLabels: {
+    }, dataLabels: {
       enabled: false,
-    },
-    legend: {
+    }, legend: {
       show: false,
-    },
-    responsive: [
-      {
-        breakpoint: 991,
-        options: {
-          chart: {
-            width: 120,
-          },
+    }, responsive: [{
+      breakpoint: 991, options: {
+        chart: {
+          width: 120,
         },
       },
-    ],
+    }],
   };
   const seriescolumnchart = [38, 40, 25];
 
-  return (
-    <DashboardCard title="Yearly Breakup">
+  return (<DashboardCard title="Yearly Breakup">
       <Grid container spacing={3}>
         {/* column */}
         <Grid item xs={7} sm={7}>
@@ -109,8 +90,7 @@ const YearlyBreakup = () => {
           />
         </Grid>
       </Grid>
-    </DashboardCard>
-  );
+    </DashboardCard>);
 };
 
 export default YearlyBreakup;

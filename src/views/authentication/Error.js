@@ -1,9 +1,8 @@
-import { Box, Container, Typography, Button } from '@mui/material';
+import { Box, Button, Container, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
 import ErrorImg from 'src/assets/images/backgrounds/404-error-idea.gif';
 
-const Error = () => (
-  <Box
+const Error = () => (<Box
     display="flex"
     flexDirection="column"
     height="100vh"
@@ -22,7 +21,6 @@ const Error = () => (
         Go Back to Home
       </Button>
     </Container>
-  </Box>
-);
+  </Box>);
 
 export default Error;

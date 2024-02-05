@@ -21,13 +21,13 @@ const SecondChart = () => {
   }, []);
 
   return (<DashboardCard>
-      <ChartTwo base64String={base64String} />
-      <div style={{ width: '800px' }}>
-        <h6>🌎 This chart shows the distribution of Uber trips across different hours of the day. The x-axis represents
-          the hour of the day and the y-axis represents the number of trips. The height of the bars indicates the number
-          of trips made on that particular hour.</h6>
-      </div>
-    </DashboardCard>);
+    <ChartTwo base64String={base64String} />
+    <div style={{ width: '800px' }}>
+      <h6>🌎 This chart shows the distribution of Uber trips across different hours of the day. The x-axis represents
+        the hour of the day and the y-axis represents the number of trips. The height of the bars indicates the number
+        of trips made on that particular hour.</h6>
+    </div>
+  </DashboardCard>);
 };
 
 export default SecondChart;

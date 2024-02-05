@@ -3,16 +3,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const BlankCard = ({ children, className }) => {
-  return (
-    <Card
+  return (<Card
       sx={{ p: 0, position: 'relative' }}
       className={className}
       elevation={9}
       variant={undefined}
     >
       {children}
-    </Card>
-  );
+    </Card>);
 };
 
 BlankCard.propTypes = {

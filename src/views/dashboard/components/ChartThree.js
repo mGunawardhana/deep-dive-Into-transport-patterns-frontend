@@ -34,17 +34,11 @@ const ChartThree = ({ base64String }) => {
     }
   }, [base64String]);
 
-  return (
-    <div style={{ width: '40vw' }}>
-      {imageSrc ? (
-        <img src={imageSrc} alt="" />
-      ) : (
-        <div className="parent-container">
+  return (<div style={{ width: '40vw' }}>
+      {imageSrc ? (<img src={imageSrc} alt="" />) : (<div className="parent-container">
           <div className="loader"></div>
-        </div>
-      )}
-    </div>
-  );
+        </div>)}
+    </div>);
 };
 
 ChartThree.propTypes = {

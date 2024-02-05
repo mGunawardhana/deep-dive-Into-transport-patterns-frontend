@@ -39,7 +39,7 @@ const SignInAndUp = () => {
 
   const formSubmitManually = async (values) => {
     try {
-      console.log(values)
+      console.log(values);
       const response = await saveUser(values);
       console.log('Response from saveUser:', response);
       toast.success('Successfully Insert');
@@ -84,21 +84,17 @@ const SignInAndUp = () => {
     }
   }, []);
 
-  return (
-    <div className="container" ref={containerRef}>
+  return (<div className="container" ref={containerRef}>
       <div className="form-container sign-up-container">
         <Formik
           enableReinitialize
           initialValues={{
-            name: '',
-            email: '',
-            password: '',
+            name: '', email: '', password: '',
           }}
           validationSchema={validationSignUpForm}
           onSubmit={formSubmitManually}
         >
-          {({ isSubmitting }) => (
-            <Form className="form">
+          {({ isSubmitting }) => (<Form className="form">
               <h3>Create Account</h3>
               <div className="social-container">
                 <img alt="Google Icon" className="social" src={googleIcon} />
@@ -112,22 +108,19 @@ const SignInAndUp = () => {
               <Button className="buttons" type="submit" disabled={isSubmitting}>
                 Sign Up
               </Button>
-            </Form>
-          )}
+            </Form>)}
         </Formik>
       </div>
       <div className="form-container sign-in-container">
         <Formik
           enableReinitialize
           initialValues={{
-            new_email: '',
-            new_password: '',
+            new_email: '', new_password: '',
           }}
           validationSchema={validationSignInForm}
           onSubmit={getAllUsersFunc}
         >
-          {({ isSubmitting }) => (
-            <Form className="form">
+          {({ isSubmitting }) => (<Form className="form">
               <h3>Sign in</h3>
               <div className="social-container">
                 <img alt="Google Icon" className="social" src={googleIcon} />
@@ -153,8 +146,7 @@ const SignInAndUp = () => {
               <Button className="buttons" type="submit" disabled={isSubmitting}>
                 Sign In
               </Button>
-            </Form>
-          )}
+            </Form>)}
         </Formik>
       </div>
       <div className="overlay-container">
@@ -177,8 +169,7 @@ const SignInAndUp = () => {
           </div>
         </div>
       </div>
-    </div>
-  );
+    </div>);
 };
 
 export default SignInAndUp;

@@ -3,18 +3,13 @@ import { ReactComponent as LogoDark } from 'src/assets/images/logos/dark-logo.sv
 import { styled } from '@mui/material';
 
 const LinkStyled = styled(Link)(() => ({
-  height: '70px',
-  width: '180px',
-  overflow: 'hidden',
-  display: 'block',
+  height: '70px', width: '180px', overflow: 'hidden', display: 'block',
 }));
 
 const Logo = () => {
-  return (
-    <LinkStyled to="/">
+  return (<LinkStyled to="/">
       <LogoDark height={70} />
-    </LinkStyled>
-  )
+    </LinkStyled>);
 };
 
 export default Logo;

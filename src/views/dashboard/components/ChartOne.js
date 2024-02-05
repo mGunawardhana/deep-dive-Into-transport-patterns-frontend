@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import '../style.css';
 
@@ -34,17 +34,11 @@ const Base64Image = ({ base64String }) => {
     }
   }, [base64String]);
 
-  return (
-    <div style={{ width: '40vw' }}>
-      {imageSrc ? (
-        <img src={imageSrc} alt="" />
-      ) : (
-        <div className="parent-container">
+  return (<div style={{ width: '40vw' }}>
+      {imageSrc ? (<img src={imageSrc} alt="" />) : (<div className="parent-container">
           <div className="loader"></div>
-        </div>
-      )}
-    </div>
-  );
+        </div>)}
+    </div>);
 };
 
 // Type checking with PropTypes

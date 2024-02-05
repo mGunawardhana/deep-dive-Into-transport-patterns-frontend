@@ -1,12 +1,11 @@
 import React from 'react';
-import { Typography, Grid, CardContent } from '@mui/material';
+import { CardContent, Grid, Typography } from '@mui/material';
 import PageContainer from 'src/components/container/PageContainer';
 import DashboardCard from '../../components/shared/DashboardCard';
 import BlankCard from 'src/components/shared/BlankCard';
 
 const TypographyPage = () => {
-  return (
-    <PageContainer title="Typography" description="this is Typography">
+  return (<PageContainer title="Typography" description="this is Typography">
       <Grid container spacing={3}>
         <Grid item sm={12}>
           <DashboardCard title="Default Text">
@@ -276,8 +275,7 @@ const TypographyPage = () => {
           </DashboardCard>
         </Grid>
       </Grid>
-    </PageContainer>
-  );
+    </PageContainer>);
 };
 
 export default TypographyPage;

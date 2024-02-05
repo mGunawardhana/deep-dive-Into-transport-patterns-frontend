@@ -1,7 +1,7 @@
 import React from 'react';
 import Chart from 'react-apexcharts';
 import { useTheme } from '@mui/material/styles';
-import { Stack, Typography, Avatar, Fab } from '@mui/material';
+import { Avatar, Fab, Stack, Typography } from '@mui/material';
 import { IconArrowDownRight, IconCurrencyDollar } from '@tabler/icons';
 import DashboardCard from '../../../components/shared/DashboardCard';
 
@@ -15,53 +15,31 @@ const MonthlyEarnings = () => {
   // chart
   const optionscolumnchart = {
     chart: {
-      type: 'area',
-      fontFamily: "'Plus Jakarta Sans', sans-serif;",
-      foreColor: '#adb0bb',
-      toolbar: {
+      type: 'area', fontFamily: '\'Plus Jakarta Sans\', sans-serif;', foreColor: '#adb0bb', toolbar: {
         show: false,
-      },
-      height: 60,
-      sparkline: {
+      }, height: 60, sparkline: {
         enabled: true,
-      },
-      group: 'sparklines',
-    },
-    stroke: {
-      curve: 'smooth',
-      width: 2,
-    },
-    fill: {
-      colors: [secondarylight],
-      type: 'solid',
-      opacity: 0.05,
-    },
-    markers: {
+      }, group: 'sparklines',
+    }, stroke: {
+      curve: 'smooth', width: 2,
+    }, fill: {
+      colors: [secondarylight], type: 'solid', opacity: 0.05,
+    }, markers: {
       size: 0,
-    },
-    tooltip: {
+    }, tooltip: {
       theme: theme.palette.mode === 'dark' ? 'dark' : 'light',
     },
   };
-  const seriescolumnchart = [
-    {
-      name: '',
-      color: secondary,
-      data: [25, 66, 20, 40, 12, 58, 20],
-    },
-  ];
+  const seriescolumnchart = [{
+    name: '', color: secondary, data: [25, 66, 20, 40, 12, 58, 20],
+  }];
 
-  return (
-    <DashboardCard
+  return (<DashboardCard
       title="Monthly Earnings"
-      action={
-        <Fab color="secondary" size="medium" sx={{ color: '#ffffff' }}>
-          <IconCurrencyDollar width={24} />
-        </Fab>
-      }
-      footer={
-        <Chart options={optionscolumnchart} series={seriescolumnchart} type="area" height="60px" />
-      }
+      action={<Fab color="secondary" size="medium" sx={{ color: '#ffffff' }}>
+        <IconCurrencyDollar width={24} />
+      </Fab>}
+      footer={<Chart options={optionscolumnchart} series={seriescolumnchart} type="area" height="60px" />}
     >
       <>
         <Typography variant="h3" fontWeight="700" mt="-20px">
@@ -79,8 +57,7 @@ const MonthlyEarnings = () => {
           </Typography>
         </Stack>
       </>
-    </DashboardCard>
-  );
+    </DashboardCard>);
 };
 
 export default MonthlyEarnings;

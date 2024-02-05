@@ -1,30 +1,17 @@
 import React from 'react';
-import { Card, CardContent, Typography, Stack, Box } from '@mui/material';
+import { Box, Card, CardContent, Stack, Typography } from '@mui/material';
 
 const DashboardCard = ({
-  title,
-  subtitle,
-  children,
-  action,
-  footer,
-  cardheading,
-  headtitle,
-  headsubtitle,
-  middlecontent,
-}) => {
-  return (
-    <Card sx={{ padding: 0 }} elevation={9} variant={undefined}>
-      {cardheading ? (
-        <CardContent>
+                         title, subtitle, children, action, footer, cardheading, headtitle, headsubtitle, middlecontent,
+                       }) => {
+  return (<Card sx={{ padding: 0 }} elevation={9} variant={undefined}>
+      {cardheading ? (<CardContent>
           <Typography variant="h5">{headtitle}</Typography>
           <Typography variant="subtitle2" color="textSecondary">
             {headsubtitle}
           </Typography>
-        </CardContent>
-      ) : (
-        <CardContent sx={{ p: '30px' }}>
-          {title ? (
-            <Stack
+        </CardContent>) : (<CardContent sx={{ p: '30px' }}>
+          {title ? (<Stack
               direction="row"
               spacing={2}
               justifyContent="space-between"
@@ -34,26 +21,19 @@ const DashboardCard = ({
               <Box>
                 {title ? <Typography variant="h5">{title}</Typography> : ''}
 
-                {subtitle ? (
-                  <Typography variant="subtitle2" color="textSecondary">
+                {subtitle ? (<Typography variant="subtitle2" color="textSecondary">
                     {subtitle}
-                  </Typography>
-                ) : (
-                  ''
-                )}
+                  </Typography>) : ('')}
               </Box>
               {action}
-            </Stack>
-          ) : null}
+            </Stack>) : null}
 
           {children}
-        </CardContent>
-      )}
+        </CardContent>)}
 
       {middlecontent}
       {footer}
-    </Card>
-  );
+    </Card>);
 };
 
 export default DashboardCard;

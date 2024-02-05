@@ -1,5 +1,5 @@
 import React from 'react';
-import { AppBar, Toolbar, styled, IconButton, Badge } from '@mui/material';
+import { AppBar, Badge, IconButton, styled, Toolbar } from '@mui/material';
 import PropTypes from 'prop-types';
 
 // components
@@ -19,12 +19,10 @@ const Header = (props) => {
     },
   }));
   const ToolbarStyled = styled(Toolbar)(({ theme }) => ({
-    width: '100%',
-    color: theme.palette.text.secondary,
+    width: '100%', color: theme.palette.text.secondary,
   }));
 
-  return (
-    <AppBarStyled position="sticky" color="default">
+  return (<AppBarStyled position="sticky" color="default">
       <ToolbarStyled>
         <IconButton
           color="inherit"
@@ -32,8 +30,7 @@ const Header = (props) => {
           onClick={props.toggleMobileSidebar}
           sx={{
             display: {
-              lg: 'none',
-              xs: 'inline',
+              lg: 'none', xs: 'inline',
             },
           }}
         >
@@ -57,8 +54,7 @@ const Header = (props) => {
           </Badge>
         </IconButton>
       </ToolbarStyled>
-    </AppBarStyled>
-  );
+    </AppBarStyled>);
 };
 
 Header.propTypes = {

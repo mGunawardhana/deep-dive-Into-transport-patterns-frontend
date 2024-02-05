@@ -18,8 +18,7 @@ const NavItem = ({ item, level, pathDirect, onClick }) => {
     color: theme.palette.text.secondary,
     paddingLeft: '10px',
     '&:hover': {
-      backgroundColor: theme.palette.success.light,
-      color: theme.palette.success.main,
+      backgroundColor: theme.palette.success.light, color: theme.palette.success.main,
     },
     '&.Mui-selected': {
       color: 'white', backgroundColor: theme.palette.success.main, '&:hover': {
@@ -29,28 +28,28 @@ const NavItem = ({ item, level, pathDirect, onClick }) => {
   }));
 
   return (<List component="li" disablePadding key={item.id}>
-      <ListItemStyled
-        button
-        component={item.external ? 'a' : NavLink}
-        to={item.href}
-        href={item.external ? item.href : ''}
-        disabled={item.disabled}
-        selected={pathDirect === item.href}
-        target={item.external ? '_blank' : ''}
-        onClick={onClick}
+    <ListItemStyled
+      button
+      component={item.external ? 'a' : NavLink}
+      to={item.href}
+      href={item.external ? item.href : ''}
+      disabled={item.disabled}
+      selected={pathDirect === item.href}
+      target={item.external ? '_blank' : ''}
+      onClick={onClick}
+    >
+      <ListItemIcon
+        sx={{
+          minWidth: '36px', p: '3px 0', color: 'inherit',
+        }}
       >
-        <ListItemIcon
-          sx={{
-            minWidth: '36px', p: '3px 0', color: 'inherit',
-          }}
-        >
-          {itemIcon}
-        </ListItemIcon>
-        <ListItemText>
-          <>{item.title}</>
-        </ListItemText>
-      </ListItemStyled>
-    </List>);
+        {itemIcon}
+      </ListItemIcon>
+      <ListItemText>
+        <>{item.title}</>
+      </ListItemText>
+    </ListItemStyled>
+  </List>);
 };
 
 NavItem.propTypes = {

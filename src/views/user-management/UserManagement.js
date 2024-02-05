@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import * as yup from 'yup';
-import { Form, Formik, Field, ErrorMessage } from 'formik';
+import { ErrorMessage, Field, Form, Formik } from 'formik';
 import 'react-toastify/dist/ReactToastify.css';
 import { Button, Card, CardBody, Col, Container, Row, TabContent, TabPane } from 'reactstrap';
 import { toast } from 'react-toastify';
@@ -70,18 +70,14 @@ const UserManagement = () => {
     notes: yup.string().required('Note Is Required'),
   });
 
-  return (
-    <React.Fragment>
+  return (<React.Fragment>
       <div className="page-content">
         <Container fluid={true}>
           <Row>
             <Col sm="12">
               <div
                 style={{
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  height: '75vh',
+                  display: 'flex', justifyContent: 'center', alignItems: 'center', height: '75vh',
                 }}
               >
                 <Card style={{ boxShadow: 'rgb(38, 57, 77) 0px 20px 30px -10px', width: '90vw' }}>
@@ -108,8 +104,7 @@ const UserManagement = () => {
                               validationSchema={validationSchema}
                               onSubmit={onSubmit}
                             >
-                              {({ isSubmitting, values, setFieldValue }) => (
-                                <Form>
+                              {({ isSubmitting, values, setFieldValue }) => (<Form>
                                   <Row>
                                     <Col md={6}>
                                       <Row className="mb-3">
@@ -368,8 +363,7 @@ const UserManagement = () => {
                                       </div>
                                     </Col>
                                   </Row>
-                                </Form>
-                              )}
+                                </Form>)}
                             </Formik>
                           </TabPane>
                         </TabContent>
@@ -382,8 +376,7 @@ const UserManagement = () => {
           </Row>
         </Container>
       </div>
-    </React.Fragment>
-  );
+    </React.Fragment>);
 };
 
 export default UserManagement;

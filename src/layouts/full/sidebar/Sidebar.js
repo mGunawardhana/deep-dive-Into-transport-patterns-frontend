@@ -1,4 +1,4 @@
-import { useMediaQuery, Box, Drawer } from '@mui/material';
+import { Box, Drawer, useMediaQuery } from '@mui/material';
 import Logo from '../shared/logo/Logo';
 import SidebarItems from './SidebarItems';
 
@@ -8,11 +8,9 @@ const Sidebar = (props) => {
   const sidebarWidth = '280px';
 
   if (lgUp) {
-    return (
-      <Box
+    return (<Box
         sx={{
-          width: sidebarWidth,
-          flexShrink: 0,
+          width: sidebarWidth, flexShrink: 0,
         }}
       >
         {/* ------------------------------------------- */}
@@ -24,8 +22,7 @@ const Sidebar = (props) => {
           variant="permanent"
           PaperProps={{
             sx: {
-              width: sidebarWidth,
-              boxSizing: 'border-box',
+              width: sidebarWidth, boxSizing: 'border-box',
             },
           }}
         >
@@ -51,20 +48,17 @@ const Sidebar = (props) => {
             </Box>
           </Box>
         </Drawer>
-      </Box>
-    );
+      </Box>);
   }
 
-  return (
-    <Drawer
+  return (<Drawer
       anchor="left"
       open={props.isMobileSidebarOpen}
       onClose={props.onSidebarClose}
       variant="temporary"
       PaperProps={{
         sx: {
-          width: sidebarWidth,
-          boxShadow: (theme) => theme.shadows[8],
+          width: sidebarWidth, boxShadow: (theme) => theme.shadows[8],
         },
       }}
     >
@@ -78,8 +72,7 @@ const Sidebar = (props) => {
       {/* Sidebar For Mobile */}
       {/* ------------------------------------------- */}
       <SidebarItems />
-    </Drawer>
-  );
+    </Drawer>);
 };
 
 export default Sidebar;

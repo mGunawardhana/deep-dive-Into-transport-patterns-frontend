@@ -1,15 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import {
-  Avatar,
-  Box,
-  Menu,
-  Button,
-  IconButton,
-  MenuItem,
-  ListItemIcon,
-  ListItemText
-} from '@mui/material';
+import { Avatar, Box, Button, IconButton, ListItemIcon, ListItemText, Menu, MenuItem } from '@mui/material';
 
 import { IconListCheck, IconMail, IconUser } from '@tabler/icons';
 
@@ -24,8 +15,7 @@ const Profile = () => {
     setAnchorEl2(null);
   };
 
-  return (
-    <Box>
+  return (<Box>
       <IconButton
         size="large"
         aria-label="show 11 new notifications"
@@ -43,8 +33,7 @@ const Profile = () => {
           src={ProfileImg}
           alt={ProfileImg}
           sx={{
-            width: 35,
-            height: 35,
+            width: 35, height: 35,
           }}
         />
       </IconButton>
@@ -89,8 +78,7 @@ const Profile = () => {
           </Button>
         </Box>
       </Menu>
-    </Box>
-  );
+    </Box>);
 };
 
 export default Profile;

@@ -42,14 +42,15 @@ a {
     text-decoration: none;
     margin: 15px 0;
 }
+
 .buttons {
     border-radius: 8px;
     border: 3px solid #ffffff;
     background: linear-gradient(
             45deg,
-            rgba(22, 160, 133,1.0) 0%,
-            rgba(46, 204, 113,1.0) 50%,
-            rgba(33, 140, 116,1.0) 100%
+            rgba(22, 160, 133, 1.0) 0%,
+            rgba(46, 204, 113, 1.0) 50%,
+            rgba(33, 140, 116, 1.0) 100%
     );
     color: #ffffff;
     font-size: 12px;
@@ -170,9 +171,9 @@ a {
     background: -webkit-linear-gradient(to right, #27ae60, #2ecc71);
     background: linear-gradient(
             70deg,
-            rgba(22, 160, 133,1.0) 0%,
-            rgba(46, 204, 113,1.0) 59%,
-            rgba(33, 140, 116,1.0) 100%
+            rgba(22, 160, 133, 1.0) 0%,
+            rgba(46, 204, 113, 1.0) 59%,
+            rgba(33, 140, 116, 1.0) 100%
     );
     background-repeat: no-repeat;
     background-size: cover;
@@ -226,8 +227,8 @@ a {
     margin: 20px 0;
 }
 
-.social{
-    margin:3px !important;
+.social {
+    margin: 3px !important;
     height: 30px !important;
     width: 30px !important;
 }

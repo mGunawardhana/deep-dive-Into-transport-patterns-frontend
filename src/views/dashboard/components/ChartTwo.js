@@ -37,17 +37,11 @@ const ChartTwo = ({ base64String }) => {
     }
   }, [base64String]);
 
-  return (
-    <div style={{ width: '40vw' }}>
-      {isLoading ? (
-        <div className="parent-container">
+  return (<div style={{ width: '40vw' }}>
+      {isLoading ? (<div className="parent-container">
           <div className="loader"></div>
-        </div>
-      ) : (
-        <img src={imageSrc} alt="" />
-      )}
-    </div>
-  );
+        </div>) : (<img src={imageSrc} alt="" />)}
+    </div>);
 };
 
 ChartTwo.propTypes = {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Box } from '@mui/material';
+import { Box, Grid } from '@mui/material';
 import PageContainer from 'src/components/container/PageContainer';
 
 // components
@@ -8,8 +8,7 @@ import YearlyBreakup from './components/YearlyBreakup';
 import MonthlyEarnings from './components/MonthlyEarnings';
 
 const Dashboard = () => {
-  return (
-    <PageContainer title="Dashboard" description="this is Dashboard">
+  return (<PageContainer title="Dashboard" description="this is Dashboard">
       <Box>
         <Grid container spacing={3}>
           <Grid item xs={12} lg={8}>
@@ -28,8 +27,7 @@ const Dashboard = () => {
           <Grid item xs={12} lg={8}></Grid>
         </Grid>
       </Box>
-    </PageContainer>
-  );
+    </PageContainer>);
 };
 
 export default Dashboard;

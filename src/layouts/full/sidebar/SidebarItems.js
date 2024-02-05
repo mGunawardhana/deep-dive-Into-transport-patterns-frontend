@@ -9,8 +9,7 @@ const SidebarItems = () => {
   const { pathname } = useLocation();
   const pathDirect = pathname;
 
-  return (
-    <Box sx={{ px: 3 }}>
+  return (<Box sx={{ px: 3 }}>
       <List sx={{ pt: 0 }} className="sidebarNav">
         {Menuitems.map((item) => {
           // {/********SubHeader**********/}
@@ -20,13 +19,10 @@ const SidebarItems = () => {
             // {/********If Sub Menu**********/}
             /* eslint no-else-return: "off" */
           } else {
-            return (
-              <NavItem item={item} key={item.id} pathDirect={pathDirect} />
-            );
+            return (<NavItem item={item} key={item.id} pathDirect={pathDirect} />);
           }
         })}
       </List>
-    </Box>
-  );
+    </Box>);
 };
 export default SidebarItems;
