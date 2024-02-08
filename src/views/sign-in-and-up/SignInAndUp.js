@@ -39,9 +39,12 @@ const SignInAndUp = () => {
 
   const formSubmitManually = async (values) => {
     try {
+      console.log('Form values:', values);
       console.log(values);
       const response = await saveUser(values);
       console.log('Response from saveUser:', response);
+      localStorage.setItem('email', values.email);
+      localStorage.setItem('username', values.name);
       toast.success('Successfully Insert');
       navigateToDashboard();
     } catch (error) {
